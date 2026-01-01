@@ -1,8 +1,12 @@
-# Server-Driven UI (SDUI) – React Native POC
+# Server-Driven UI (SDUI) – Expo + Node.js (POC)
 
-This project is a **learning + POC implementation of Server-Driven UI (SDUI)** using **React Native (Expo)** on the frontend and **Node.js + Express** on the backend.
+This repository is a **learning & POC project** to understand and implement **Server-Driven UI (SDUI)** using:
 
-The goal is to **control the Home screen layout, components, styling, and content from the backend** using JSON — similar to how apps like **Flipkart, Amazon, Netflix** manage dynamic screens.
+- **Expo + React Native (Expo Router)**
+- **Node.js + Express**
+- **JSON file as database**
+
+The goal is to dynamically control the **Home screen layout, components, content, and configuration from the backend**, similar to apps like **Flipkart, Amazon, Netflix**, etc.
 
 ---
 
@@ -11,14 +15,14 @@ The goal is to **control the Home screen layout, components, styling, and conten
 Server-Driven UI means:
 
 - Backend sends **UI configuration as JSON**
-- Frontend renders UI **based on type + config**
-- App UI can change **without app updates**
-- Used heavily for:
+- Frontend **renders UI based on `type` + `config`**
+- UI can change **without publishing a new app build**
+- Useful for:
 
-  - Festival themes
+  - Festival / seasonal screens
   - A/B testing
-  - Feature rollouts
-  - Dynamic layouts
+  - Feature flags
+  - Dynamic layouts & content
 
 ---
 
@@ -26,20 +30,19 @@ Server-Driven UI means:
 
 ### Frontend
 
-- **Expo**
-- **React Native**
-- **TypeScript**
-- FlatList-based rendering
-- Component-based architecture
+- Expo
+- React Native
+- **Expo Router (file-based routing)**
+- TypeScript
 
 ### Backend
 
-- **Node.js**
-- **Express**
-- **JSON file as DB** (for learning & POC)
-- Clean layered architecture
+- Node.js
+- Express
+- JSON file as DB (for learning & POC)
 
-> ⚠️ No Firebase / paid services used (learning-friendly)
+> ⚠️ No Firebase / paid services are used
+> This is intentional for learning purposes.
 
 ---
 
@@ -49,7 +52,7 @@ Server-Driven UI means:
 Server-Driven-UI/
 ├── backend/
 │   ├── data/
-│   │   └── home.json
+│   │   └── home.json          # Server-driven UI config
 │   ├── src/
 │   │   ├── app.js
 │   │   ├── server.js
@@ -62,13 +65,27 @@ Server-Driven-UI/
 │   └── package.json
 │
 ├── frontend/
+│   ├── app/                   # Expo Router routes
+│   │   ├── _layout.tsx
+│   │   └── index.tsx          # Home screen
+│   │
 │   ├── src/
-│   │   ├── screens/
-│   │   ├── components/
-│   │   ├── services/
-│   │   └── types/
+│   │   ├── components/        # UI components
+│   │   │   ├── Banner.tsx
+│   │   │   ├── CategoryGrid.tsx
+│   │   │   └── index.ts
+│   │   │
+│   │   ├── services/          # API calls
+│   │   │   └── home.api.ts
+│   │   │
+│   │   ├── types/             # Shared types
+│   │   │   └── component.type.ts
+│   │   │
+│   │   └── utils/
+│   │
 │   ├── app.json
-│   └── package.json
+│   ├── package.json
+│   └── tsconfig.json
 │
 ├── .gitignore
 └── README.md
@@ -80,7 +97,7 @@ Server-Driven-UI/
 
 ### Purpose
 
-- Serve **Home screen configuration**
+- Serve **Home screen UI configuration**
 - Filter sections by:
 
   - `festival`
@@ -113,7 +130,7 @@ Server-Driven-UI/
 GET /api/home?festival=default
 ```
 
-### Response
+### API Response
 
 ```json
 {
@@ -127,24 +144,21 @@ GET /api/home?festival=default
 
 ---
 
-## 📱 Frontend Overview
+## 📱 Frontend Overview (Expo Router)
 
-### Key Concepts
+### Routing
 
-- **FlatList** renders sections
-- Each section has:
+- Uses **Expo Router**
+- `app/index.tsx` → Home screen
+- No traditional `screens/` folder
 
-  - `type`
-  - `config`
+### Rendering Logic
 
-- Components decide how to render based on `type`
+- Home screen fetches JSON from backend
+- Uses `FlatList`
+- Renders components dynamically based on `type`
 
-### Supported Components
-
-- `banner`
-- `category_grid`
-
-### Example Rendering Logic
+Example:
 
 ```tsx
 if (item.type === "banner") {
@@ -158,14 +172,26 @@ if (item.type === "category_grid") {
 
 ---
 
-## 🎯 Why JSON DB (for now)?
+## 🧩 Supported UI Components (Current)
 
-This project intentionally uses **JSON instead of a real DB** because:
+- `banner`
+- `category_grid`
+
+Each component:
+
+- Receives a `config` object
+- Is fully controlled by backend JSON
+
+---
+
+## 🎯 Why JSON DB?
+
+This project uses **JSON as DB** because:
 
 - Easy to understand
-- No infra cost
-- Perfect for SDUI learning
-- Easy migration later to:
+- Zero setup
+- Ideal for SDUI learning
+- Easy to migrate later to:
 
   - MongoDB
   - PostgreSQL
@@ -199,7 +225,7 @@ npm install
 npx expo start
 ```
 
-Use:
+Run on:
 
 - Expo Go
 - iOS Simulator
@@ -207,25 +233,25 @@ Use:
 
 ---
 
-## 🧪 Current Status
+## 🧪 Project Status
 
-- ✅ Backend serving dynamic UI config
-- ✅ Frontend rendering server-driven sections
-- 🚧 Styling & layout configs (WIP)
-- 🚧 Templates / screen layouts (planned)
+- ✅ Backend serving server-driven UI config
+- ✅ Expo Router based frontend
+- ✅ Dynamic Home screen rendering
+- 🚧 Styling & layout configs (planned)
+- 🚧 Multiple layout templates (planned)
 - 🚧 Production hardening (later)
 
 ---
 
-## 🗺️ Roadmap (Next Steps)
+## 🗺️ Planned Improvements (Future)
 
-- Screen-level config (background, padding, theme)
-- Multiple layout templates
-- Component-level style config
-- Feature flags
-- A/B testing support
-- DB migration (MongoDB / PostgreSQL)
-- Caching & performance optimization
+- Screen-level configuration (background, padding, theme)
+- Component-level styling config
+- Multiple Home screen templates
+- Schema validation
+- Caching & performance improvements
+- Database migration
 
 ---
 
@@ -234,5 +260,5 @@ Use:
 This project is:
 
 - ❌ Not production-ready
-- ✅ Perfect for **learning SDUI concepts**
-- ✅ Suitable for POC & experimentation
+- ✅ Intended for learning & experimentation
+- ✅ A clean SDUI POC
