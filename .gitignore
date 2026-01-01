@@ -1,0 +1,66 @@
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+*.log
+
+# =========================
+# Node.js (Common)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Backend (Node / Express)
+# =========================
+backend/node_modules/
+backend/.env
+backend/data/*.tmp
+backend/dist/
+backend/build/
+
+# =========================
+# Frontend (Expo / React Native)
+# =========================
+frontend/node_modules/
+frontend/.env
+frontend/.expo/
+frontend/.expo-shared/
+frontend/web-build/
+frontend/dist/
+
+# Expo specific
+expo-env.d.ts
+
+# =========================
+# React Native
+# =========================
+*.keystore
+*.jks
+
+# =========================
+# iOS
+# =========================
+ios/Pods/
+ios/build/
+ios/.xcworkspace/
+ios/*.xcuserstate
+ios/.xcode.env.local
+
+# =========================
+# Android
+# =========================
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/*.iml
+
+# =========================
+# Testing / Coverage
+# =========================
+coverage/

@@ -1,0 +1,81 @@
+{
+  "designTokens": {
+    "spacing": {
+      "xs": 4,
+      "sm": 8,
+      "md": 12,
+      "lg": 16,
+      "xl": 24
+    },
+    "radius": {
+      "sm": 6,
+      "md": 10,
+      "lg": 16
+    },
+    "colors": {
+      "primary": "#2874F0",
+      "surface": "#FFFFFF",
+      "border": "#E0E0E0",
+      "muted": "#F5F5F5"
+    }
+  },
+  "screen": {
+    "id": "home_default",
+    "template": "hero_first",
+    "background": {
+      "type": "color",
+      "value": "muted"
+    }
+  },
+  "sections": [
+    {
+      "id": "banner_default_1",
+      "type": "banner",
+      "order": 1,
+      "festival": "default",
+      "active": true,
+      "layout": {
+        "container": {
+          "margin": "md",
+          "radius": "md"
+        }
+      },
+      "config": {
+        "title": "Welcome Offer",
+        "image": "https://picsum.photos/200"
+      }
+    },
+    {
+      "id": "category_grid_default_1",
+      "type": "category_grid",
+      "order": 2,
+      "festival": "default",
+      "active": true,
+      "layout": {
+        "container": {
+          "padding": "md",
+          "background": "surface",
+          "radius": "md",
+          "border": {
+            "width": 1,
+            "color": "border"
+          }
+        },
+        "item": {
+          "padding": "sm",
+          "background": "muted",
+          "radius": "sm"
+        }
+      },
+      "config": {
+        "title": "Categories",
+        "columns": 3,
+        "items": [
+          { "id": "mobiles", "label": "Mobiles" },
+          { "id": "fashion", "label": "Fashion" },
+          { "id": "electronics", "label": "Electronics" }
+        ]
+      }
+    }
+  ]
+}
