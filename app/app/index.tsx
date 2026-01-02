@@ -24,7 +24,7 @@ export default function Home() {
         paddingHorizontal: 20,
       }}>
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 24 }}
+        contentContainerStyle={{ paddingBottom: 50 }}
         showsVerticalScrollIndicator={false}>
         {data.sections.map((section) => {
           const Component = COMPONENTS[section.type]

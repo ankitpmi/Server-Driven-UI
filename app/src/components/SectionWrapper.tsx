@@ -17,6 +17,7 @@ export function SectionWrapper({ layout, tokens, children }: any) {
         marginBottom: resolveToken(c.marginBottom, tokens),
         marginStart: resolveToken(c.marginStart, tokens),
         marginEnd: resolveToken(c.marginEnd, tokens),
+        height: c?.height,
       }}>
       {children}
     </View>

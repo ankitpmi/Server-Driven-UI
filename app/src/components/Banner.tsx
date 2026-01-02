@@ -7,7 +7,7 @@ export function Banner({ config, layout, tokens }: any) {
     <SectionWrapper layout={layout} tokens={tokens}>
       <Image
         source={{ uri: config.image }}
-        style={{ height: 160, borderRadius: 10, backgroundColor: "red" }}
+        style={{ height: "100%", borderRadius: 10, backgroundColor: "red" }}
       />
       {config.title && <Text>{config.title}</Text>}
     </SectionWrapper>

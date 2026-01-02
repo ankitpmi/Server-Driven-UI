@@ -38,7 +38,8 @@
         "container": {
           "radius": "md",
           "marginTop": "md",
-          "marginBottom": "md"
+          "marginBottom": "md",
+          "height": 160
         }
       },
       "config": {
@@ -78,6 +79,57 @@
           { "id": "home_appliances", "label": "Home Appliances" },
           { "id": "beauty_personal_care", "label": "Beauty & Personal Care" },
           { "id": "grocery", "label": "Grocery" }
+        ]
+      }
+    },
+    {
+      "id": "shop_by_category_grid_default_1",
+      "type": "category_grid",
+      "order": 2,
+      "festival": "default",
+      "active": true,
+      "layout": {
+        "container": {
+          "padding": "md",
+          "background": "surface",
+          "radius": "md",
+          "marginTop": "md",
+          "border": {
+            "width": 1,
+            "color": "border"
+          }
+        },
+        "item": {
+          "padding": "sm",
+          "background": "muted",
+          "radius": "sm",
+          "height": 140
+        }
+      },
+      "config": {
+        "title": "Shop by Category",
+        "columns": 2,
+        "items": [
+          {
+            "id": "apple",
+            "label": "Apple",
+            "logo": "https://picsum.photos/100"
+          },
+          {
+            "id": "samsung",
+            "label": "Samsung",
+            "logo": "https://picsum.photos/101"
+          },
+          {
+            "id": "oneplus",
+            "label": "OnePlus",
+            "logo": "https://picsum.photos/102"
+          },
+          {
+            "id": "xiaomi",
+            "label": "Xiaomi",
+            "logo": "https://picsum.photos/103"
+          }
         ]
       }
     }
