@@ -16,7 +16,12 @@
       "primary": "#2874F0",
       "surface": "#FFFFFF",
       "border": "#E0E0E0",
-      "muted": "#F5F5F5"
+      "muted": "#F5F5F5",
+      "aliceBlue": "#cfe0fc",
+      "lightPink": "#ffe6e6",
+      "babyPink": "#ffb3b3",
+      "mutedCoral": "#ff8080",
+      "coralRed": "#ff5050"
     }
   },
   "screen": {
@@ -60,6 +65,11 @@
           "border": {
             "width": 1,
             "color": "border"
+          },
+          "gradient": {
+            "colors": ["primary", "aliceBlue"],
+            "start": [1, 0],
+            "end": [1, 1]
           }
         },
         "item": {
@@ -97,6 +107,11 @@
           "border": {
             "width": 1,
             "color": "border"
+          },
+          "gradient": {
+            "colors": ["coralRed", "babyPink"],
+            "start": [1, 0],
+            "end": [1, 1]
           }
         },
         "item": {
@@ -108,7 +123,7 @@
       },
       "config": {
         "title": "Shop by Category",
-        "columns": 2,
+        "columns": 3,
         "items": [
           {
             "id": "apple",
