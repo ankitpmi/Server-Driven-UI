@@ -64,7 +64,8 @@
         "item": {
           "padding": "sm",
           "background": "muted",
-          "radius": "sm"
+          "radius": "sm",
+          "height": 80
         }
       },
       "config": {
