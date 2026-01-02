@@ -3,6 +3,8 @@ import { resolveToken } from "@/src/utils/designToken.util"
 import { SectionWrapper } from "./SectionWrapper"
 
 export function CategoryGrid({ config, layout, tokens }: any) {
+  console.log("layout CategoryGrid ::::: ", layout)
+
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
       {config.title && <Text>{config.title}</Text>}

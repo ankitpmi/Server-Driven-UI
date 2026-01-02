@@ -36,12 +36,12 @@
       "active": true,
       "layout": {
         "container": {
-          "margin": "md",
-          "radius": "md"
+          "radius": "md",
+          "marginTop": "md",
+          "marginBottom": "md"
         }
       },
       "config": {
-        "title": "Welcome Offer",
         "image": "https://picsum.photos/200"
       }
     },

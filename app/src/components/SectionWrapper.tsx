@@ -13,6 +13,10 @@ export function SectionWrapper({ layout, tokens, children }: any) {
         borderRadius: resolveToken(c.radius, tokens),
         borderWidth: c.border?.width,
         borderColor: resolveToken(c.border?.color, tokens),
+        marginTop: resolveToken(c.marginTop, tokens),
+        marginBottom: resolveToken(c.marginBottom, tokens),
+        marginStart: resolveToken(c.marginStart, tokens),
+        marginEnd: resolveToken(c.marginEnd, tokens),
       }}>
       {children}
     </View>
