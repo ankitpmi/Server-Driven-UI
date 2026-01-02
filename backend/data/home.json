@@ -73,7 +73,10 @@
         "items": [
           { "id": "mobiles", "label": "Mobiles" },
           { "id": "fashion", "label": "Fashion" },
-          { "id": "electronics", "label": "Electronics" }
+          { "id": "electronics", "label": "Electronics" },
+          { "id": "home_appliances", "label": "Home Appliances" },
+          { "id": "beauty_personal_care", "label": "Beauty & Personal Care" },
+          { "id": "grocery", "label": "Grocery" }
         ]
       }
     }

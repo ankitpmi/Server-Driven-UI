@@ -24,7 +24,7 @@ export function CategoryGrid({ config, layout, tokens }: any) {
               justifyContent: "center",
               height: 80,
             }}>
-            <Text>{item.label}</Text>
+            <Text style={{ textAlign: "center" }}>{item.label}</Text>
           </View>
         )}
       />
