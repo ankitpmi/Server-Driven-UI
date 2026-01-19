@@ -1,5 +1,9 @@
-import { readJsonFile } from "../utils/file.util.js"
+const { readJsonFile } = require("../utils/file.util")
 
-export async function getHomeData() {
+async function getHomeData() {
   return readJsonFile("data/home.json")
+}
+
+module.exports = {
+  getHomeData,
 }

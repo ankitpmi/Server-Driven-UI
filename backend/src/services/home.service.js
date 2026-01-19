@@ -1,11 +1,12 @@
-import { getHomeData } from "../repositories/home.repo.js"
+// import { getHomeData } from "../repositories/home.repo.js"
+const { getHomeData } = require("../repositories/home.repo")
 
-export async function getHome(festival = "default") {
+async function getHome(festival = "default") {
   const data = await getHomeData()
 
   const sections = data.sections
     .filter(
-      (s) => s.active && (s.festival === festival || s.festival === "default")
+      (s) => s.active && (s.festival === festival || s.festival === "default"),
     )
     .sort((a, b) => a.order - b.order)
 
@@ -14,4 +15,8 @@ export async function getHome(festival = "default") {
     screen: data.screen,
     sections,
   }
+}
+
+module.exports = {
+  getHome,
 }

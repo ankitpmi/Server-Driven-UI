@@ -1,6 +1,6 @@
-import { getHome } from "../services/home.service.js"
+const { getHome } = require("../services/home.service")
 
-export async function fetchHome(req, res) {
+async function fetchHome(req, res) {
   const { festival = "default" } = req.query
   const data = await getHome(festival)
 
@@ -8,4 +8,8 @@ export async function fetchHome(req, res) {
     success: true,
     data,
   })
+}
+
+module.exports = {
+  fetchHome,
 }
