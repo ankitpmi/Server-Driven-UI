@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { ActivityIndicator, ScrollView } from "react-native"
 import { fetchHome } from "@/src/services"
-import { COMPONENTS, SectionWrapper } from "@/src/components"
+import { AppLayout, COMPONENTS, SectionWrapper } from "@/src/components"
 import { HomeApiResponse } from "@/src/types"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 export default function Home() {
   const [data, setData] = useState<HomeApiResponse | null>(null)
@@ -18,7 +19,7 @@ export default function Home() {
   // console.log("RES ::: ", JSON.stringify(data.screen.layout, null, 2))
 
   return (
-    <>
+    <AppLayout>
       <SectionWrapper
         layout={data.screen.layout}
         tokens={data.designTokens}
@@ -39,6 +40,6 @@ export default function Home() {
           })}
         </ScrollView>
       </SectionWrapper>
-    </>
+    </AppLayout>
   )
 }

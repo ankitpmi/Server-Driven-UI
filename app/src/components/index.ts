@@ -4,6 +4,7 @@ import { SectionRenderer } from "./SectionRenderer"
 
 export * from "./SectionWrapper"
 export * from "./SectionItemWrapper"
+export * from "./AppLayout"
 
 export const COMPONENTS: any = {
   banner: Banner,
