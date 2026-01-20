@@ -1,10 +1,11 @@
 import { StyleProp, View, ViewStyle, ImageBackground } from "react-native"
 import { resolveToken } from "@/src/utils/designToken.util"
 import { LinearGradient } from "expo-linear-gradient"
+import { DesignTokens, LayoutConfig } from "../types"
 
 interface SectionWrapperProps {
-  layout: any
-  tokens: any
+  layout?: LayoutConfig
+  tokens?: DesignTokens
   children: React.ReactNode
   containerStyle?: StyleProp<ViewStyle>
 }
@@ -17,7 +18,7 @@ export const SectionWrapper = ({
 }: SectionWrapperProps) => {
   const c = layout?.container ?? {}
   const background = c.background
-  const backgroundType = c.background?.backgroundType
+  // const backgroundType = c.background?.backgroundType
 
   const commonStyle: ViewStyle[] = [
     {
@@ -36,12 +37,18 @@ export const SectionWrapper = ({
   ]
 
   // ✅ Gradient container
-  if (backgroundType === "gradient") {
+  if (background?.backgroundType === "gradient" && background?.colors) {
     return (
       <LinearGradient
-        colors={background.colors.map((c: string) => resolveToken(c, tokens))}
-        start={background.start ?? [0, 0]}
-        end={background.end ?? [1, 1]}
+        colors={
+          background.colors.map((c: string) => resolveToken(c, tokens)) as [
+            string,
+            string,
+            ...string[],
+          ]
+        }
+        start={background?.start ?? [0, 0]}
+        end={background?.end ?? [1, 1]}
         style={[commonStyle, containerStyle]}>
         {children}
       </LinearGradient>
@@ -49,7 +56,7 @@ export const SectionWrapper = ({
   }
 
   // ✅ Image background container
-  if (backgroundType === "image" && background.value) {
+  if (background?.backgroundType === "image" && background.value) {
     return (
       <ImageBackground
         source={{ uri: background.value }}
@@ -64,7 +71,7 @@ export const SectionWrapper = ({
       style={[
         ...commonStyle,
         background &&
-          background.value && {
+          background?.backgroundType === "color" && {
             backgroundColor: resolveToken(background.value, tokens),
           },
         containerStyle,

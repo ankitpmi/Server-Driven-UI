@@ -2,7 +2,6 @@ import { Image, Text } from "react-native"
 import { SectionWrapper } from "./SectionWrapper"
 
 export function Banner({ config, layout, tokens }: any) {
-  console.log("layout banner ::::: ", layout)
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
       <Image

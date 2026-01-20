@@ -28,6 +28,11 @@ export interface LayoutBox {
     width: number
     color: string
   }
+  marginTop?: string | number
+  marginBottom?: string | number
+  marginStart?: string | number
+  marginEnd?: string | number
+  height?: number
 }
 
 export interface LayoutConfig {

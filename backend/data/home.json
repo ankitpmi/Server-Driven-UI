@@ -26,15 +26,7 @@
   },
   "screen": {
     "id": "home_default",
-    "template": "hero_first",
-    "layout": {
-      "container": {
-        "background": {
-          "backgroundType": "image",
-          "value": "https://firebasestorage.googleapis.com/v0/b/chatappdemo-87f4f.appspot.com/o/Blue%20Circle%20Background.jpeg?alt=media&token=38263d1b-6637-425b-9719-f78fac233f72"
-        }
-      }
-    }
+    "template": "hero_first"
   },
   "sections": [
     {
