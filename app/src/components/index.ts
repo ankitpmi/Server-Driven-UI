@@ -3,6 +3,7 @@ import { CategoryGrid } from "./CategoryGrid"
 import { SectionRenderer } from "./SectionRenderer"
 
 export * from "./SectionWrapper"
+export * from "./SectionItemWrapper"
 
 export const COMPONENTS: any = {
   banner: Banner,

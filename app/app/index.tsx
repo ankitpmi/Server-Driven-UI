@@ -15,7 +15,7 @@ export default function Home() {
     return <ActivityIndicator style={{ flex: 1 }} />
   }
 
-  console.log("RES ::: ", JSON.stringify(data.screen.layout, null, 2))
+  // console.log("RES ::: ", JSON.stringify(data.screen.layout, null, 2))
 
   return (
     <>

@@ -3,20 +3,20 @@ import { resolveToken } from "@/src/utils/designToken.util"
 import { LinearGradient } from "expo-linear-gradient"
 import { DesignTokens, LayoutConfig } from "../types"
 
-interface SectionWrapperProps {
+interface SectionItemWrapperProps {
   layout?: LayoutConfig
   tokens?: DesignTokens
   children: React.ReactNode
   containerStyle?: StyleProp<ViewStyle>
 }
 
-export const SectionWrapper = ({
+export const SectionItemWrapper = ({
   layout,
   tokens,
   children,
   containerStyle,
-}: SectionWrapperProps) => {
-  const c = layout?.container ?? {}
+}: SectionItemWrapperProps) => {
+  const c = layout?.item ?? {}
   const background = c.background
   // const backgroundType = c.background?.backgroundType
 
