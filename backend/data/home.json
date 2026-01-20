@@ -27,9 +27,13 @@
   "screen": {
     "id": "home_default",
     "template": "hero_first",
-    "background": {
-      "type": "color",
-      "value": "muted"
+    "layout": {
+      "container": {
+        "background": {
+          "backgroundType": "image",
+          "value": "https://firebasestorage.googleapis.com/v0/b/chatappdemo-87f4f.appspot.com/o/Blue%20Circle%20Background.jpeg?alt=media&token=38263d1b-6637-425b-9719-f78fac233f72"
+        }
+      }
     }
   },
   "sections": [
@@ -44,7 +48,9 @@
           "radius": "md",
           "marginTop": "md",
           "marginBottom": "md",
-          "height": 160
+          "height": 160,
+          "marginStart": "lg",
+          "marginEnd": "lg"
         }
       },
       "config": {
@@ -60,17 +66,20 @@
       "layout": {
         "container": {
           "padding": "md",
-          "background": "surface",
+
           "radius": "md",
           "border": {
             "width": 1,
             "color": "border"
           },
-          "gradient": {
+          "background": {
+            "backgroundType": "gradient",
             "colors": ["primary", "aliceBlue"],
             "start": [1, 0],
             "end": [1, 1]
-          }
+          },
+          "marginStart": "lg",
+          "marginEnd": "lg"
         },
         "item": {
           "padding": "sm",
@@ -101,14 +110,18 @@
       "layout": {
         "container": {
           "padding": "md",
-          "background": "surface",
+
           "radius": "md",
           "marginTop": "md",
+          "marginStart": "lg",
+          "marginEnd": "lg",
           "border": {
             "width": 1,
             "color": "border"
           },
-          "gradient": {
+
+          "background": {
+            "backgroundType": "gradient",
             "colors": ["coralRed", "babyPink"],
             "start": [1, 0],
             "end": [1, 1]

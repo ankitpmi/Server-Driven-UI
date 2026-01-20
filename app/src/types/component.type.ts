@@ -4,10 +4,25 @@ export interface DesignTokens {
   colors: Record<string, string>
 }
 
+export type ScreenBackground =
+  | {
+      backgroundType: "color"
+      value: string
+    }
+  | {
+      backgroundType: "image"
+      value: string
+    }
+  | {
+      backgroundType: "gradient"
+      colors: string[]
+      start?: [number, number]
+      end?: [number, number]
+    }
 export interface LayoutBox {
   padding?: string | number
   margin?: string | number
-  background?: string
+  background?: ScreenBackground
   radius?: string | number
   border?: {
     width: number
@@ -23,10 +38,7 @@ export interface LayoutConfig {
 export interface ScreenConfig {
   id: string
   template: string
-  background?: {
-    type: "color" | "image"
-    value: string
-  }
+  layout?: LayoutConfig
 }
 
 /* Section configs */

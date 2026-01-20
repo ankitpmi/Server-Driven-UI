@@ -3,7 +3,7 @@ export async function fetchHome(festival = "default") {
 
   const json = await res.json()
 
-  console.log("RES ::: ", JSON.stringify(json.data, null, 2))
+  // console.log("RES ::: ", JSON.stringify(json.data, null, 2))
 
   return json.data // ✅ return ONLY sections
 }
