@@ -6,7 +6,7 @@ export interface DesignTokens {
 
 export type ScreenBackground =
   | {
-      backgroundType: "color"
+      backgroundType: "solidColor"
       value: string
     }
   | {

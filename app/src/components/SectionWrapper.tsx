@@ -72,7 +72,7 @@ export const SectionWrapper = ({
       style={[
         ...commonStyle,
         background &&
-          background?.backgroundType === "color" && {
+          background?.backgroundType === "solidColor" && {
             backgroundColor: resolveToken(background.value, tokens),
           },
         containerStyle,
