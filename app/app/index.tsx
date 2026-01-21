@@ -15,10 +15,10 @@ export default function Home() {
     return <ActivityIndicator style={{ flex: 1 }} />
   }
 
-  // console.log("RES ::: ", JSON.stringify(data.screen.layout, null, 2))
-
+  console.log("RES ::: ", JSON.stringify(data.designTokens, null, 2))
+  //  customColor={data.designTokens.colors.mutedCoral}
   return (
-    <AppLayout>
+    <AppLayout statusBarBgColor={data.designTokens.colors.mutedCoral}>
       <SectionWrapper
         layout={data.screenConfig.layout}
         tokens={data.designTokens}

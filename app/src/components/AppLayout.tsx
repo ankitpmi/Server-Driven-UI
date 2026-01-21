@@ -12,9 +12,10 @@ import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 
 interface AppLayoutProps extends React.PropsWithChildren {
   useSafeArea?: boolean
-  containerBgColor?: "primary" | "secondary"
+
   customColor?: string
-  bottom?: number
+  statusBarBgColor?: string
+
   onLayout?: (height?: number) => void
 
   addBottomPadding?: boolean // To handle bottom padding for android where tab bar is not visible
@@ -28,18 +29,31 @@ export const AppLayout = React.memo(
   ({
     children,
     useSafeArea = true,
-    containerBgColor = "primary",
     customColor,
-    bottom: propBottom,
     onLayout,
     addBottomPadding = false,
+    statusBarBgColor = "#FFFFFF",
   }: AppLayoutProps) => {
-    const { bottom } = useSafeAreaInsets()
+    const { bottom, top } = useSafeAreaInsets()
 
     const Container = useSafeArea ? SafeAreaView : View
 
     return (
       <>
+        {Platform.OS === "ios" && (
+          <View
+            style={{
+              height: top,
+
+              backgroundColor: statusBarBgColor,
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              zIndex: 10,
+            }}
+          />
+        )}
         <Container
           style={[
             styles.safeAreaView,
