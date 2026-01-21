@@ -1,6 +1,8 @@
 {
-  "screen": "home",
-  "uiVersion": "v1",
+  "metaData": {
+    "screen": "home",
+    "uiVersion": "v1"
+  },
   "designTokens": {
     "spacing": {
       "xs": 4,
@@ -28,12 +30,14 @@
   },
   "screenConfig": {
     "id": "home_default",
-    "template": "hero_first"
+    "template": "hero_first",
+    "version": "v1"
   },
   "sections": [
     {
       "id": "banner_default_1",
       "type": "banner",
+      "version": "v1",
       "order": 1,
       "festival": "default",
       "active": true,
@@ -56,6 +60,7 @@
     {
       "id": "category_grid_default_1",
       "type": "category_grid",
+      "version": "v1",
       "order": 2,
       "festival": "default",
       "active": true,
@@ -100,6 +105,7 @@
     {
       "id": "shop_by_category_grid_default_1",
       "type": "category_grid",
+      "version": "v1",
       "order": 4,
       "festival": "default",
       "active": true,
@@ -160,6 +166,7 @@
     {
       "id": "shop_by_laptop_category_horizontal_default_1",
       "type": "category_horizontal",
+      "version": "v1",
       "order": 3,
       "festival": "default",
       "active": true,

@@ -11,6 +11,7 @@ async function getHome(festival = "default") {
     .sort((a, b) => a.order - b.order)
 
   return {
+    metaData: data.metaData,
     designTokens: data.designTokens,
     screenConfig: data.screenConfig,
     sections,

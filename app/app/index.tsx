@@ -3,7 +3,6 @@ import { ActivityIndicator, ScrollView } from "react-native"
 import { fetchHome } from "@/src/services"
 import { AppLayout, COMPONENTS, SectionWrapper } from "@/src/components"
 import { HomeApiResponse } from "@/src/types"
-import { SafeAreaView } from "react-native-safe-area-context"
 
 export default function Home() {
   const [data, setData] = useState<HomeApiResponse | null>(null)
