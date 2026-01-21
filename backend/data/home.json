@@ -38,11 +38,7 @@
       "layout": {
         "container": {
           "height": 260,
-          "padding": "lg",
-          "background": {
-            "backgroundType": "image",
-            "value": "https://static.vecteezy.com/system/resources/thumbnails/002/267/284/small/festa-junina-celebration-background-free-vector.jpg"
-          }
+          "padding": "lg"
         },
         "item": {
           "radius": "md",

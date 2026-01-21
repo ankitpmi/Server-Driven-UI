@@ -4,35 +4,38 @@ import { SectionWrapper } from "./SectionWrapper"
 import { CategoryGridConfig, DesignTokens, LayoutConfig } from "../types"
 import { parseSize } from "../utils"
 
-interface CategoryGridProps {
+interface HorizontalListProps {
   layout?: LayoutConfig
   tokens?: DesignTokens
   config?: CategoryGridConfig
 }
 
-export function CategoryGrid({ config, layout, tokens }: CategoryGridProps) {
-  console.log("layout CategoryGrid ::::: ", layout)
-
+export function HorizontalList({
+  config,
+  layout,
+  tokens,
+}: HorizontalListProps) {
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
-      {config && config.title && <Text>{config?.title}</Text>}
+      {config && config?.title && <Text>{config.title}</Text>}
 
       <FlatList
         data={config?.items}
-        numColumns={config?.columns ?? 3}
+        horizontal
+        showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
-        scrollEnabled={false}
+        contentContainerStyle={{}}
         renderItem={({ item }) => (
           <View
             style={{
-              flex: 1,
-              margin: 6,
+              width: parseSize(layout?.item?.width),
+              height: parseSize(layout?.item?.height),
+              marginRight: resolveToken(layout?.item?.gap, tokens),
               padding: resolveToken(layout?.item?.padding, tokens),
               backgroundColor: resolveToken(layout?.item?.background, tokens),
               borderRadius: resolveToken(layout?.item?.radius, tokens),
               alignItems: "center",
               justifyContent: "center",
-              height: parseSize(layout?.item?.height),
             }}>
             <Text style={{ textAlign: "center" }}>{item.label}</Text>
           </View>

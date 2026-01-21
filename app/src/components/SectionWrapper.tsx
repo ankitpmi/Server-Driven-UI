@@ -2,6 +2,7 @@ import { StyleProp, View, ViewStyle, ImageBackground } from "react-native"
 import { resolveToken } from "@/src/utils/designToken.util"
 import { LinearGradient } from "expo-linear-gradient"
 import { DesignTokens, LayoutConfig } from "../types"
+import { parseSize } from "../utils"
 
 interface SectionWrapperProps {
   layout?: LayoutConfig
@@ -31,7 +32,7 @@ export const SectionWrapper = ({
       marginBottom: resolveToken(c.marginBottom, tokens),
       marginStart: resolveToken(c.marginStart, tokens),
       marginEnd: resolveToken(c.marginEnd, tokens),
-      height: c?.height,
+      height: parseSize(c?.height),
       overflow: "hidden", // 🔑 important for radius with gradient
     },
   ]

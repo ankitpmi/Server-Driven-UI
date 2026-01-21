@@ -32,7 +32,9 @@ export interface LayoutBox {
   marginBottom?: string | number
   marginStart?: string | number
   marginEnd?: string | number
-  height?: number
+  height?: number | string
+  width?: number | string
+  gap?: number
 }
 
 export interface LayoutConfig {
