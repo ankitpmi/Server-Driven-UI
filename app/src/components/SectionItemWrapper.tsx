@@ -1,8 +1,8 @@
 import { StyleProp, View, ViewStyle, ImageBackground } from "react-native"
-import { resolveToken } from "@/src/utils/designToken.util"
+
 import { LinearGradient } from "expo-linear-gradient"
 import { DesignTokens, LayoutConfig } from "../types"
-import { parseSize } from "../utils"
+import { resolveColor, resolveLayoutBox } from "../utils"
 
 interface SectionItemWrapperProps {
   layout?: LayoutConfig
@@ -21,28 +21,14 @@ export const SectionItemWrapper = ({
   const background = c.background
   // const backgroundType = c.background?.backgroundType
 
-  const commonStyle: ViewStyle[] = [
-    {
-      padding: resolveToken(c.padding, tokens),
-      margin: resolveToken(c.margin, tokens),
-      borderRadius: resolveToken(c.radius, tokens),
-      borderWidth: c.border?.width,
-      borderColor: resolveToken(c.border?.color, tokens),
-      marginTop: resolveToken(c.marginTop, tokens),
-      marginBottom: resolveToken(c.marginBottom, tokens),
-      marginStart: resolveToken(c.marginStart, tokens),
-      marginEnd: resolveToken(c.marginEnd, tokens),
-      height: parseSize(c?.height),
-      overflow: "hidden", // 🔑 important for radius with gradient
-    },
-  ]
+  const commonStyle = resolveLayoutBox(c, tokens)
 
   // ✅ Gradient container
   if (background?.backgroundType === "gradient" && background?.colors) {
     return (
       <LinearGradient
         colors={
-          background.colors.map((c: string) => resolveToken(c, tokens)) as [
+          background.colors.map((c: string) => resolveColor(c, tokens)) as [
             string,
             string,
             ...string[],
@@ -71,10 +57,10 @@ export const SectionItemWrapper = ({
   return (
     <View
       style={[
-        ...commonStyle,
+        commonStyle,
         background &&
           background?.backgroundType === "solidColor" && {
-            backgroundColor: resolveToken(background.value, tokens),
+            backgroundColor: resolveColor(background.value, tokens),
           },
         containerStyle,
       ]}>

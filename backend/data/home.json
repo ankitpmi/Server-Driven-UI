@@ -43,8 +43,8 @@
       "active": true,
       "layout": {
         "container": {
-          "height": 260,
-          "padding": "lg"
+          "paddingStart": "lg",
+          "paddingEnd": "lg"
         },
         "item": {
           "radius": "md",
@@ -86,7 +86,8 @@
           "padding": "sm",
           "background": "muted",
           "radius": "sm",
-          "height": 80
+          "height": 80,
+          "margin": "sm"
         }
       },
       "config": {
@@ -133,7 +134,8 @@
           "padding": "sm",
           "background": "muted",
           "radius": "sm",
-          "height": 140
+          "height": 140,
+          "margin": "sm"
         }
       },
       "config": {
@@ -196,8 +198,10 @@
           "padding": "sm",
           "background": "muted",
           "radius": "sm",
-          "gap": "md",
-          "marginTop": "md"
+
+          "marginTop": "md",
+          "marginStart": "sm",
+          "marginEnd": "sm"
         }
       },
 

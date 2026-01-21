@@ -1,8 +1,13 @@
 import { View, Text, FlatList } from "react-native"
-import { resolveToken } from "@/src/utils/designToken.util"
+
 import { SectionWrapper } from "./SectionWrapper"
 import { CategoryGridConfig, DesignTokens, LayoutConfig } from "../types"
-import { parseSize } from "../utils"
+import {
+  parseSize,
+  resolveColor,
+  resolveLayoutBox,
+  resolveToken,
+} from "../utils"
 
 interface CategoryGridProps {
   layout?: LayoutConfig
@@ -12,6 +17,8 @@ interface CategoryGridProps {
 
 export function CategoryGrid({ config, layout, tokens }: CategoryGridProps) {
   console.log("layout CategoryGrid ::::: ", layout)
+
+  const commonStyle = resolveLayoutBox(layout?.item, tokens)
 
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
@@ -24,16 +31,15 @@ export function CategoryGrid({ config, layout, tokens }: CategoryGridProps) {
         scrollEnabled={false}
         renderItem={({ item }) => (
           <View
-            style={{
-              flex: 1,
-              margin: 6,
-              padding: resolveToken(layout?.item?.padding, tokens),
-              backgroundColor: resolveToken(layout?.item?.background, tokens),
-              borderRadius: resolveToken(layout?.item?.radius, tokens),
-              alignItems: "center",
-              justifyContent: "center",
-              height: parseSize(layout?.item?.height),
-            }}>
+            style={[
+              commonStyle,
+              {
+                flex: 1,
+                backgroundColor: resolveColor(layout?.item?.background, tokens),
+                alignItems: "center",
+                justifyContent: "center",
+              },
+            ]}>
             <Text style={{ textAlign: "center" }}>{item.label}</Text>
           </View>
         )}

@@ -1,2 +1,3 @@
-export * from "./designToken.util"
+export * from "./designResolver"
 export * from "./parseSize"
+export * from "./layoutResolver"

@@ -1,8 +1,13 @@
 import { View, Text, FlatList } from "react-native"
-import { resolveToken } from "@/src/utils/designToken.util"
+
 import { SectionWrapper } from "./SectionWrapper"
 import { CategoryGridConfig, DesignTokens, LayoutConfig } from "../types"
-import { parseSize } from "../utils"
+import {
+  parseSize,
+  resolveColor,
+  resolveLayoutBox,
+  resolveToken,
+} from "../utils"
 
 interface HorizontalListProps {
   layout?: LayoutConfig
@@ -15,6 +20,8 @@ export function HorizontalList({
   layout,
   tokens,
 }: HorizontalListProps) {
+  const commonStyle = resolveLayoutBox(layout?.item, tokens)
+
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
       {config && config?.title && <Text>{config.title}</Text>}
@@ -27,17 +34,14 @@ export function HorizontalList({
         contentContainerStyle={{}}
         renderItem={({ item }) => (
           <View
-            style={{
-              width: parseSize(layout?.item?.width),
-              height: parseSize(layout?.item?.height),
-              marginRight: resolveToken(layout?.item?.gap, tokens),
-              padding: resolveToken(layout?.item?.padding, tokens),
-              backgroundColor: resolveToken(layout?.item?.background, tokens),
-              borderRadius: resolveToken(layout?.item?.radius, tokens),
-              marginTop: resolveToken(layout?.item?.marginTop, tokens),
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
+            style={[
+              commonStyle,
+              {
+                backgroundColor: resolveColor(layout?.item?.background, tokens),
+                alignItems: "center",
+                justifyContent: "center",
+              },
+            ]}>
             <Text style={{ textAlign: "center" }}>{item.label}</Text>
           </View>
         )}
