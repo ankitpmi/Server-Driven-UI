@@ -11,7 +11,7 @@
       "lg": 16,
       "xl": 24
     },
-    "radius": {
+    "borderRadius": {
       "sm": 6,
       "md": 10,
       "lg": 16
@@ -35,10 +35,32 @@
   },
   "sections": [
     {
+      "id": "home_header_v1",
+      "type": "header",
+      "version": "v1",
+      "order": 1,
+      "festival": "default",
+
+      "active": true,
+
+      "layout": {
+        "container": {
+          "padding": "md",
+          "background": {
+            "backgroundType": "solidColor",
+            "value": "mutedCoral"
+          }
+        }
+      },
+
+      "config": {}
+    },
+
+    {
       "id": "banner_default_1",
       "type": "banner",
       "version": "v1",
-      "order": 1,
+      "order": 2,
       "festival": "default",
       "active": true,
       "layout": {
@@ -47,7 +69,7 @@
           "paddingEnd": "lg"
         },
         "item": {
-          "radius": "md",
+          "borderRadius": "md",
           "marginTop": "xl",
           "marginBottom": "md",
           "height": 180
@@ -61,14 +83,14 @@
       "id": "category_grid_default_1",
       "type": "category_grid",
       "version": "v1",
-      "order": 2,
+      "order": 3,
       "festival": "default",
       "active": true,
       "layout": {
         "container": {
           "padding": "md",
 
-          "radius": "md",
+          "borderRadius": "md",
           "border": {
             "width": 1,
             "color": "border"
@@ -84,8 +106,11 @@
         },
         "item": {
           "padding": "sm",
-          "background": "muted",
-          "radius": "sm",
+          "background": {
+            "backgroundType": "solidColor",
+            "value": "muted"
+          },
+          "borderRadius": "sm",
           "height": 80,
           "margin": "sm"
         }
@@ -107,14 +132,14 @@
       "id": "shop_by_category_grid_default_1",
       "type": "category_grid",
       "version": "v1",
-      "order": 4,
+      "order": 5,
       "festival": "default",
       "active": true,
       "layout": {
         "container": {
           "padding": "md",
 
-          "radius": "md",
+          "borderRadius": "md",
           "marginTop": "md",
           "marginStart": "lg",
           "marginEnd": "lg",
@@ -132,8 +157,11 @@
         },
         "item": {
           "padding": "sm",
-          "background": "muted",
-          "radius": "sm",
+          "background": {
+            "backgroundType": "solidColor",
+            "value": "muted"
+          },
+          "borderRadius": "sm",
           "height": 140,
           "margin": "sm"
         }
@@ -169,14 +197,14 @@
       "id": "shop_by_laptop_category_horizontal_default_1",
       "type": "category_horizontal",
       "version": "v1",
-      "order": 3,
+      "order": 4,
       "festival": "default",
       "active": true,
 
       "layout": {
         "container": {
           "padding": "md",
-          "radius": "md",
+          "borderRadius": "md",
           "marginTop": "md",
           "marginStart": "lg",
           "marginEnd": "lg",
@@ -196,8 +224,11 @@
           "width": 140,
           "height": 200,
           "padding": "sm",
-          "background": "muted",
-          "radius": "sm",
+          "background": {
+            "backgroundType": "solidColor",
+            "value": "muted"
+          },
+          "borderRadius": "sm",
 
           "marginTop": "md",
           "marginStart": "sm",

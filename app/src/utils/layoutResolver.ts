@@ -33,7 +33,7 @@ export function resolveLayoutBox(
     height: resolveDimension(box.height, tokens),
 
     // border
-    borderRadius: resolveSize(box.radius, tokens),
+    borderRadius: resolveSize(box.borderRadius, tokens),
     borderWidth: box.border?.width,
     borderColor: resolveColor(box.border?.color, tokens),
 
@@ -41,7 +41,7 @@ export function resolveLayoutBox(
     gap: resolveSize(box.gap, tokens),
 
     // Background
-    backgroundColor: resolveColor(box?.background, tokens),
+    backgroundColor: resolveColor(box?.background?.value, tokens),
 
     // required for gradient & image clipping
     overflow: "hidden",

@@ -2,12 +2,7 @@ import { View, Text, FlatList } from "react-native"
 
 import { SectionWrapper } from "./SectionWrapper"
 import { CategoryGridConfig, DesignTokens, LayoutConfig } from "../types"
-import {
-  parseSize,
-  resolveColor,
-  resolveLayoutBox,
-  resolveToken,
-} from "../utils"
+import { resolveLayoutBox } from "../utils"
 
 interface CategoryGridProps {
   layout?: LayoutConfig
@@ -16,8 +11,6 @@ interface CategoryGridProps {
 }
 
 export function CategoryGrid({ config, layout, tokens }: CategoryGridProps) {
-  console.log("layout CategoryGrid ::::: ", layout)
-
   const commonStyle = resolveLayoutBox(layout?.item, tokens)
 
   return (
