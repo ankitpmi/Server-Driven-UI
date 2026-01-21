@@ -3,6 +3,7 @@ import { ActivityIndicator, ScrollView } from "react-native"
 import { fetchHome } from "@/src/services"
 import { AppLayout, COMPONENTS, SectionWrapper } from "@/src/components"
 import { HomeApiResponse } from "@/src/types"
+import { resolveColor } from "@/src/utils"
 
 export default function Home() {
   const [data, setData] = useState<HomeApiResponse | null>(null)
@@ -17,7 +18,11 @@ export default function Home() {
 
   //  customColor={data.designTokens.colors.mutedCoral}
   return (
-    <AppLayout statusBarBgColor={data.designTokens.colors.mutedCoral}>
+    <AppLayout
+      statusBarBgColor={resolveColor(
+        data.screenConfig.statusBardBackground,
+        data.designTokens,
+      )}>
       <SectionWrapper
         layout={data.screenConfig.layout}
         tokens={data.designTokens}

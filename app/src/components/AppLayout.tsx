@@ -1,5 +1,6 @@
 import React from "react"
 import {
+  ColorValue,
   Platform,
   StatusBar,
   StyleProp,
@@ -14,7 +15,7 @@ interface AppLayoutProps extends React.PropsWithChildren {
   useSafeArea?: boolean
 
   customColor?: string
-  statusBarBgColor?: string
+  statusBarBgColor?: ColorValue
 
   onLayout?: (height?: number) => void
 

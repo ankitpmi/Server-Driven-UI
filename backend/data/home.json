@@ -31,7 +31,8 @@
   "screenConfig": {
     "id": "home_default",
     "template": "hero_first",
-    "version": "v1"
+    "version": "v1",
+    "statusBardBackground": "mutedCoral"
   },
   "sections": [
     {

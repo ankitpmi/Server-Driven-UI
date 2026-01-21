@@ -98,6 +98,7 @@ export interface ScreenConfig {
   id: string
   template: string
   layout?: LayoutConfig
+  statusBardBackground?: string
 }
 
 /* Section configs */
