@@ -35,7 +35,7 @@ export function CategoryGrid({ config, layout, tokens }: CategoryGridProps) {
               commonStyle,
               {
                 flex: 1,
-                backgroundColor: resolveColor(layout?.item?.background, tokens),
+                // backgroundColor: resolveColor(layout?.item?.background, tokens),
                 alignItems: "center",
                 justifyContent: "center",
               },

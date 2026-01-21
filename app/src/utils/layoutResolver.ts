@@ -40,6 +40,9 @@ export function resolveLayoutBox(
     // layout
     gap: resolveSize(box.gap, tokens),
 
+    // Background
+    backgroundColor: resolveColor(box?.background, tokens),
+
     // required for gradient & image clipping
     overflow: "hidden",
   }

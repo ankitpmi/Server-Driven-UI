@@ -37,7 +37,7 @@ export function HorizontalList({
             style={[
               commonStyle,
               {
-                backgroundColor: resolveColor(layout?.item?.background, tokens),
+                // backgroundColor: resolveColor(layout?.item?.background, tokens),
                 alignItems: "center",
                 justifyContent: "center",
               },

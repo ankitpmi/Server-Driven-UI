@@ -57,10 +57,10 @@ export const SectionWrapper = ({
     <View
       style={[
         commonStyle,
-        background &&
-          background?.backgroundType === "solidColor" && {
-            backgroundColor: resolveColor(background.value, tokens),
-          },
+        // background &&
+        //   background?.backgroundType === "solidColor" && {
+        //     backgroundColor: resolveColor(background.value, tokens),
+        //   },
         containerStyle,
       ]}>
       {children}
