@@ -12,7 +12,7 @@ async function getHome(festival = "default") {
 
   return {
     designTokens: data.designTokens,
-    screen: data.screen,
+    screenConfig: data.screenConfig,
     sections,
   }
 }

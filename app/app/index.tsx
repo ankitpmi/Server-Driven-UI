@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <AppLayout>
       <SectionWrapper
-        layout={data.screen.layout}
+        layout={data.screenConfig.layout}
         tokens={data.designTokens}
         containerStyle={{ flex: 1 }}>
         <ScrollView

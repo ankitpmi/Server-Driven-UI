@@ -88,6 +88,6 @@ export type HomeSection =
 
 export interface HomeApiResponse {
   designTokens: DesignTokens
-  screen: ScreenConfig
+  screenConfig: ScreenConfig
   sections: HomeSection[]
 }
