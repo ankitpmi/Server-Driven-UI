@@ -98,7 +98,7 @@
     {
       "id": "shop_by_category_grid_default_1",
       "type": "category_grid",
-      "order": 2,
+      "order": 4,
       "festival": "default",
       "active": true,
       "layout": {
@@ -151,6 +151,85 @@
             "id": "xiaomi",
             "label": "Xiaomi",
             "logo": "https://picsum.photos/103"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shop_by_laptop_category_horizontal_default_1",
+      "type": "category_horizontal",
+      "order": 3,
+      "festival": "default",
+      "active": true,
+
+      "layout": {
+        "container": {
+          "padding": "md",
+          "radius": "md",
+          "marginTop": "md",
+          "marginStart": "lg",
+          "marginEnd": "lg",
+
+          "border": {
+            "width": 1,
+            "color": "border"
+          },
+
+          "background": {
+            "backgroundType": "image",
+            "value": "https://png.pngtree.com/thumb_back/fh260/background/20191226/pngtree-firework-celebration-party-new-year-background-image_325579.jpg"
+          }
+        },
+
+        "item": {
+          "width": 140,
+          "height": 200,
+          "padding": "sm",
+          "background": "muted",
+          "radius": "sm",
+          "gap": "md",
+          "marginTop": "md"
+        }
+      },
+
+      "config": {
+        "title": "Shop Laptops by Brand",
+        "scroll": "horizontal",
+        "items": [
+          {
+            "id": "apple_macbook",
+            "label": "Apple MacBook",
+            "logo": "https://picsum.photos/seed/macbook/120"
+          },
+          {
+            "id": "dell",
+            "label": "Dell",
+            "logo": "https://picsum.photos/seed/dell/120"
+          },
+          {
+            "id": "hp",
+            "label": "HP",
+            "logo": "https://picsum.photos/seed/hp/120"
+          },
+          {
+            "id": "lenovo",
+            "label": "Lenovo",
+            "logo": "https://picsum.photos/seed/lenovo/120"
+          },
+          {
+            "id": "asus",
+            "label": "ASUS",
+            "logo": "https://picsum.photos/seed/asus/120"
+          },
+          {
+            "id": "acer",
+            "label": "Acer",
+            "logo": "https://picsum.photos/seed/acer/120"
+          },
+          {
+            "id": "msi",
+            "label": "MSI",
+            "logo": "https://picsum.photos/seed/msi/120"
           }
         ]
       }

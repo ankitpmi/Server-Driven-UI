@@ -34,6 +34,7 @@ export function HorizontalList({
               padding: resolveToken(layout?.item?.padding, tokens),
               backgroundColor: resolveToken(layout?.item?.background, tokens),
               borderRadius: resolveToken(layout?.item?.radius, tokens),
+              marginTop: resolveToken(layout?.item?.marginTop, tokens),
               alignItems: "center",
               justifyContent: "center",
             }}>

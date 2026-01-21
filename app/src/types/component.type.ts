@@ -32,6 +32,10 @@ export interface LayoutBox {
   marginBottom?: string | number
   marginStart?: string | number
   marginEnd?: string | number
+  paddingTop?: string | number
+  paddingBottom?: string | number
+  paddingStart?: string | number
+  paddingEnd?: string | number
   height?: number | string
   width?: number | string
   gap?: number
