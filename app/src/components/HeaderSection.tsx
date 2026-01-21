@@ -36,14 +36,17 @@ export const HeaderSection = ({
         placeholder={"Search"}
         style={{
           // height: layout?.search?.height,
-          height: 50,
-          borderRadius: resolveToken(layout?.search?.borderRadius, tokens),
-          paddingHorizontal: resolveToken(
-            layout?.search?.paddingHorizontal,
-            tokens,
-          ),
-          backgroundColor: resolveColor(layout?.search?.background, tokens),
-          marginBottom: resolveToken(layout?.search?.marginBottom, tokens),
+          height: 44,
+          // borderRadius: resolveToken(layout?.search?.borderRadius, tokens),
+          borderRadius: 8,
+          backgroundColor: "#fff",
+          paddingHorizontal: 16,
+          // paddingHorizontal: resolveToken(
+          //   layout?.search?.paddingHorizontal,
+          //   tokens,
+          // ),
+          // backgroundColor: resolveColor(layout?.search?.background, tokens),
+          // marginBottom: resolveToken(layout?.search?.marginBottom, tokens),
         }}
       />
       {/* )} */}

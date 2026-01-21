@@ -46,6 +46,8 @@ export interface LayoutBox {
   marginBottom?: number | string
   marginStart?: number | string
   marginEnd?: number | string
+  marginHorizontal?: number | string
+  marginVertical?: number | string
 
   padding?: number | string
   paddingTop?: number | string
@@ -53,6 +55,7 @@ export interface LayoutBox {
   paddingStart?: number | string
   paddingEnd?: number | string
   paddingHorizontal?: number | string
+  paddingVertical?: number | string
 
   // Background
   /**

@@ -45,10 +45,14 @@
 
       "layout": {
         "container": {
-          "padding": "md",
+          "paddingHorizontal": "lg",
+          "paddingVertical": "lg",
+
           "background": {
-            "backgroundType": "solidColor",
-            "value": "mutedCoral"
+            "backgroundType": "gradient",
+            "colors": ["mutedCoral", "lightPink"],
+            "start": [1, 0],
+            "end": [1, 1]
           }
         }
       },
