@@ -24,6 +24,7 @@ export type ScreenBackground =
       start?: [number, number]
       end?: [number, number]
       value?: string
+      locations?: [number, number, ...number[]] | null
     }
 /**
  * LayoutBox

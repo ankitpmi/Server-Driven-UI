@@ -35,7 +35,7 @@ export const SectionWrapper = ({
         }
         start={background?.start ?? [0, 0]}
         end={background?.end ?? [1, 1]}
-        locations={[0, 0.9, 1]}
+        locations={background?.locations ?? undefined}
         style={[commonStyle, containerStyle]}>
         {children}
       </LinearGradient>
