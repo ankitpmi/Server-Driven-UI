@@ -50,13 +50,13 @@
       "layout": {
         "container": {
           "paddingHorizontal": "lg",
-          "paddingVertical": "lg",
+          "paddingVertical": "xl",
           "background": {
             "backgroundType": "gradient",
             "colors": ["mutedCoral", "white", "whiteTransparent"],
             "start": [1, 0],
             "end": [1, 1],
-            "locations": [0, 0.9, 1]
+            "locations": [0, 0.9, 0.98]
           }
         }
       },
