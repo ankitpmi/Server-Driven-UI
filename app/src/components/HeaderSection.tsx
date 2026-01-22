@@ -199,7 +199,7 @@ export const HeaderSection = ({
             style={{
               alignItems: "center",
               justifyContent: "center",
-              // backgroundColor: "red",
+              backgroundColor: "#F5F5F5",
               marginHorizontal: 4,
               padding: 2,
               width: 80,
@@ -207,7 +207,6 @@ export const HeaderSection = ({
               borderWidth: 1,
               borderColor: "#ff5050",
               borderRadius: 8,
-              // height: 50
             }}>
             <CategoryIcon icon={item.icon} />
 
