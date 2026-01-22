@@ -1,51 +1,115 @@
 import React from "react"
 import {
-  ColorValue,
   Platform,
   StatusBar,
   StyleProp,
   StyleSheet,
   View,
   ViewStyle,
+  ColorValue,
 } from "react-native"
 
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context"
 
+import { SectionWrapper } from "./SectionWrapper"
+import { DesignTokens, LayoutConfig } from "../types"
+
 interface AppLayoutProps extends React.PropsWithChildren {
   useSafeArea?: boolean
 
-  customColor?: string
+  layout?: LayoutConfig
+  tokens?: DesignTokens
+
   statusBarBgColor?: ColorValue
+  barStyle?: "light-content" | "dark-content"
+
+  addBottomPadding?: boolean
+  containerStyle?: StyleProp<ViewStyle>
 
   onLayout?: (height?: number) => void
-
-  addBottomPadding?: boolean // To handle bottom padding for android where tab bar is not visible
 }
 
-const mainContainerStyle: StyleProp<ViewStyle> = {
-  paddingBottom: 80,
-}
+const ANDROID_BOTTOM_PADDING = 80
 
 export const AppLayout = React.memo(
   ({
     children,
-    useSafeArea = true,
-    customColor,
-    onLayout,
+    useSafeArea = false,
+
+    layout,
+    tokens,
+
+    statusBarBgColor = "transparent",
+    barStyle = "dark-content",
+
     addBottomPadding = false,
-    statusBarBgColor = "#FFFFFF",
+    containerStyle,
+
+    onLayout,
   }: AppLayoutProps) => {
-    const { bottom, top } = useSafeAreaInsets()
+    const { top, bottom } = useSafeAreaInsets()
 
-    const Container = useSafeArea ? SafeAreaView : View
+    /**
+     * -------------------------
+     * SafeArea wrapper
+     * -------------------------
+     */
+    if (useSafeArea) {
+      return (
+        <>
+          {/* iOS status bar background */}
+          {Platform.OS === "ios" && (
+            <View
+              style={{
+                height: top,
+                backgroundColor: statusBarBgColor,
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 10,
+              }}
+            />
+          )}
 
+          <SafeAreaView
+            style={styles.safeArea}
+            edges={{ top: "additive", bottom: "off" }}
+            onLayout={({ nativeEvent }) => {
+              const height = nativeEvent.layout.height
+              height > 0 && onLayout?.(height)
+            }}>
+            <StatusBar backgroundColor={statusBarBgColor} barStyle={barStyle} />
+
+            <View
+              style={[
+                styles.content,
+                { paddingTop: top },
+                { paddingBottom: bottom || 24 },
+                addBottomPadding &&
+                  Platform.OS === "android" && {
+                    paddingBottom: ANDROID_BOTTOM_PADDING,
+                  },
+                containerStyle,
+              ]}>
+              {children}
+            </View>
+          </SafeAreaView>
+        </>
+      )
+    }
+
+    /**
+     * -------------------------
+     * SectionWrapper (non-safe-area)
+     * -------------------------
+     */
     return (
       <>
         {Platform.OS === "ios" && (
           <View
             style={{
               height: top,
-
               backgroundColor: statusBarBgColor,
               position: "absolute",
               top: 0,
@@ -55,47 +119,29 @@ export const AppLayout = React.memo(
             }}
           />
         )}
-        <Container
-          style={[
-            styles.safeAreaView,
-            customColor && { backgroundColor: customColor },
-          ]}
-          mode="padding"
-          onLayout={({ nativeEvent }) => {
-            const { height } = nativeEvent.layout
-            if (height > 0) {
-              if (onLayout) {
-                setTimeout(() => {
-                  onLayout?.(height)
-                }, 500)
-              }
-            }
-          }}
-          edges={{ bottom: "off", top: "additive" }}>
-          <StatusBar backgroundColor={"#fff"} barStyle={"dark-content"} />
-          <View
-            style={[
-              styles.mainContainer,
-              { paddingBottom: bottom ?? 24 },
-              addBottomPadding &&
-                Platform.OS === "android" &&
-                mainContainerStyle,
-            ]}>
-            {children}
-          </View>
-        </Container>
+        <StatusBar backgroundColor={statusBarBgColor} barStyle={barStyle} />
+
+        <SectionWrapper
+          layout={layout}
+          tokens={tokens}
+          containerStyle={[
+            { paddingTop: top },
+            { paddingBottom: bottom || 24 },
+            ,
+            containerStyle,
+          ]}>
+          {children}
+        </SectionWrapper>
       </>
     )
   },
 )
 
-export const styles = StyleSheet.create({
-  safeAreaView: {
-    backgroundColor: "#FFFFFF",
+const styles = StyleSheet.create({
+  safeArea: {
     flex: 1,
   },
-  mainContainer: {
+  content: {
     flex: 1,
-    // paddingBottom: bottom ?? Spacing.spacing24VH,
   },
 })

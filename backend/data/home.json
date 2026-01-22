@@ -48,7 +48,6 @@
         "container": {
           "paddingHorizontal": "lg",
           "paddingVertical": "lg",
-
           "background": {
             "backgroundType": "gradient",
             "colors": ["mutedCoral", "lightPink"],
