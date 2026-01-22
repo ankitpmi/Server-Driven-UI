@@ -25,7 +25,10 @@
       "lightPink": "#ffe6e6",
       "babyPink": "#ffb3b3",
       "mutedCoral": "#ff8080",
-      "coralRed": "#ff5050"
+      "coralRed": "#ff5050",
+      "white": "#ffffff",
+      "black": "#000000",
+      "whiteTransparent": "rgba(255, 255, 255, 0)"
     }
   },
   "screenConfig": {
@@ -50,7 +53,7 @@
           "paddingVertical": "lg",
           "background": {
             "backgroundType": "gradient",
-            "colors": ["mutedCoral", "lightPink"],
+            "colors": ["mutedCoral", "white", "whiteTransparent"],
             "start": [1, 0],
             "end": [1, 1]
           }
@@ -80,7 +83,7 @@
         }
       },
       "config": {
-        "image": "https://picsum.photos/200"
+        "image": "https://www.shutterstock.com/image-vector/super-sale-promotional-banner-promo-600nw-2570295095.jpg"
       }
     },
     {

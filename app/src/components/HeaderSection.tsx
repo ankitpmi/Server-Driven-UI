@@ -149,7 +149,6 @@ export const HeaderSection = ({
   layout,
   tokens,
 }: HeaderSectionProps) => {
-  console.log("layout: ", layout)
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
       {/* ---------- Title ---------- */}

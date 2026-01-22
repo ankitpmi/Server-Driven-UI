@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { ActivityIndicator, FlatList, ScrollView } from "react-native"
+import { ActivityIndicator, FlatList, View } from "react-native"
 import { fetchHome } from "@/src/services"
-import { AppLayout, COMPONENTS, SectionWrapper } from "@/src/components"
-import { HomeApiResponse } from "@/src/types"
+import { AppLayout, COMPONENTS } from "@/src/components"
+import { HomeApiResponse, HomeSection } from "@/src/types"
 import { resolveColor } from "@/src/utils"
 
 export default function Home() {
@@ -16,7 +16,13 @@ export default function Home() {
     return <ActivityIndicator style={{ flex: 1 }} />
   }
 
-  const renderSection = ({ item }: { item: any }) => {
+  const renderSection = ({
+    item,
+    index,
+  }: {
+    item: HomeSection
+    index: number
+  }) => {
     const Component = COMPONENTS[item.type]
     return (
       <Component
@@ -32,16 +38,31 @@ export default function Home() {
     <AppLayout
       layout={data.screenConfig.layout}
       tokens={data.designTokens}
+      containerStyle={{ backgroundColor: data.designTokens.colors.white }}
       statusBarBgColor={resolveColor(
         data.screenConfig.statusBardBackground,
         data.designTokens,
       )}>
       <FlatList
-        data={data.sections}
+        data={data.sections.slice(1)}
+        renderItem={renderSection}
+        stickyHeaderIndices={[0]}
+        ListHeaderComponent={() => {
+          const item = data.sections[0]
+          const Component = COMPONENTS[item.type]
+
+          return (
+            <Component
+              key={item.id}
+              config={item.config}
+              layout={item.layout}
+              tokens={data.designTokens}
+            />
+          )
+        }}
         contentContainerStyle={{ paddingBottom: 50 }}
         bounces={false}
         showsVerticalScrollIndicator={false}
-        renderItem={renderSection}
         keyExtractor={(item, index) => item.id || index.toString()}
       />
     </AppLayout>
