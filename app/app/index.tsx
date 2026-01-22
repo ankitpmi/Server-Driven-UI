@@ -29,6 +29,7 @@ export default function Home() {
         containerStyle={{ flex: 1 }}>
         <ScrollView
           contentContainerStyle={{ paddingBottom: 50 }}
+          bounces={false}
           showsVerticalScrollIndicator={false}>
           {data.sections.map((section) => {
             const Component = COMPONENTS[section.type]
