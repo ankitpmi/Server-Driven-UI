@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image } from "react-native"
+import { View, Text, FlatList, Image, Pressable } from "react-native"
 
 import { SectionWrapper } from "../../shared"
 import { resolveLayoutBox } from "@/src/utils"
@@ -38,7 +38,7 @@ export function CategoryGridV1({
         keyExtractor={(item) => item.id}
         scrollEnabled={false}
         renderItem={({ item }) => (
-          <View
+          <Pressable
             style={[
               commonStyle,
               {
@@ -65,7 +65,7 @@ export function CategoryGridV1({
               style={{ textAlign: "center", color: "#fff", fontWeight: "700" }}>
               {item.label || item.name}
             </Text> */}
-          </View>
+          </Pressable>
         )}
       />
     </SectionWrapper>

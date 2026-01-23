@@ -203,10 +203,7 @@
         },
         "item": {
           "padding": "sm",
-          "background": {
-            "backgroundType": "solidColor",
-            "value": "muted"
-          },
+
           "borderRadius": "sm",
           "height": 140,
           "margin": "sm"
