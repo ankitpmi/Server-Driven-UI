@@ -53,6 +53,7 @@ export function HorizontalListV1({
             ]}>
             <Image
               source={{ uri: item.image }}
+              resizeMode="cover"
               style={{ width: "100%", height: "100%" }}
             />
             {/* <Text style={{ textAlign: "center" }}>{item.label}</Text> */}

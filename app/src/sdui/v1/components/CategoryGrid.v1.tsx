@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native"
+import { View, Text, FlatList, Image } from "react-native"
 
 import { SectionWrapper } from "../../shared"
 import { resolveLayoutBox } from "@/src/utils"
@@ -9,6 +9,8 @@ interface CategoryGridV1Props {
   tokens?: DesignTokens
   config?: CategoryGridConfigV1
 }
+
+const GAP = 12
 
 export function CategoryGridV1({
   config,
@@ -41,12 +43,28 @@ export function CategoryGridV1({
               commonStyle,
               {
                 flex: 1,
-                // backgroundColor: resolveColor(layout?.item?.background, tokens),
                 alignItems: "center",
                 justifyContent: "center",
               },
             ]}>
-            <Text style={{ textAlign: "center" }}>{item.label}</Text>
+            <View
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
+              }}>
+              <Image
+                resizeMode="cover"
+                source={{ uri: item?.image || "" }}
+                style={{ height: "100%", width: "100%", borderRadius: 8 }}
+              />
+            </View>
+            {/* <Text
+              style={{ textAlign: "center", color: "#fff", fontWeight: "700" }}>
+              {item.label || item.name}
+            </Text> */}
           </View>
         )}
       />
