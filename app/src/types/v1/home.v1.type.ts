@@ -1,4 +1,5 @@
 import { DesignTokens, LayoutConfig } from "../common"
+import { CategoryGridConfig } from "../component.type"
 
 export interface ScreenConfigV1 {
   id: string
@@ -32,7 +33,9 @@ export type HomeSectionV1 =
       type: "header"
       order: number
       layout?: LayoutConfig
-      config: unknown
+      config: CategoryGridConfigV1
+      active?: boolean
+      version?: string
     }
   | {
       id: string
@@ -40,6 +43,8 @@ export type HomeSectionV1 =
       order: number
       layout?: LayoutConfig
       config: BannerConfigV1
+      active?: boolean
+      version?: string
     }
   | {
       id: string
@@ -47,6 +52,8 @@ export type HomeSectionV1 =
       order: number
       layout?: LayoutConfig
       config: CategoryGridConfigV1
+      active?: boolean
+      version?: string
     }
   | {
       id: string
@@ -54,6 +61,8 @@ export type HomeSectionV1 =
       order: number
       layout?: LayoutConfig
       config: CategoryGridConfigV1
+      active?: boolean
+      version?: string
     }
 
 export interface HomePayloadV1 {
