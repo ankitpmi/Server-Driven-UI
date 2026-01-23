@@ -1,3 +1,16 @@
+/* ================================
+   API METADATA
+================================ */
+
+export interface ApiMetaData {
+  screen: string
+  uiVersion: "v1" | "v2" | string
+}
+
+/* ================================
+   DESIGN TOKENS
+================================ */
+
 export interface DesignTokens {
   spacing: Record<string, number>
   borderRadius: Record<string, number>
@@ -8,6 +21,10 @@ export interface DesignTokens {
   fontFamily?: Record<string, string>
   fontWeight?: Record<string, string | number>
 }
+
+/* ================================
+   BACKGROUND TYPES
+================================ */
 
 export type ScreenBackground =
   | {
@@ -23,25 +40,20 @@ export type ScreenBackground =
       colors: string[]
       start?: [number, number]
       end?: [number, number]
-      value?: string
       locations?: [number, number, ...number[]] | null
+      value?: string
     }
-/**
- * LayoutBox
- *
- * Common style configuration object used in Server-Driven UI.
- * Supports layout, spacing, background, border and text styling.
- *
- * All values can be token-based (string) or raw numbers.
- */
+
+/* ================================
+   LAYOUT SYSTEM
+================================ */
+
 export interface LayoutBox {
-  // Layout
   width?: number | string
   height?: number | string
   gap?: number
   borderRadius?: number | string
 
-  // Spacing
   margin?: number | string
   marginTop?: number | string
   marginBottom?: number | string
@@ -58,21 +70,12 @@ export interface LayoutBox {
   paddingHorizontal?: number | string
   paddingVertical?: number | string
 
-  // Background
-  /**
-   * Background configuration:
-   * - solid color
-   * - gradient
-   * - image
-   */
   background?: ScreenBackground
-  // Border
+
   border?: {
     width: number
     color: string
   }
-
-  // Text Styling
 
   fontFamily?: string
   fontSize?: number | string
@@ -95,6 +98,10 @@ export interface LayoutConfig {
   category?: LayoutBox
 }
 
+/* ================================
+   SCREEN CONFIG
+================================ */
+
 export interface ScreenConfig {
   id: string
   template: string
@@ -102,7 +109,9 @@ export interface ScreenConfig {
   statusBardBackground?: string
 }
 
-/* Section configs */
+/* ================================
+   SECTION CONFIGS (V1)
+================================ */
 
 export interface BannerConfig {
   title?: string
@@ -112,6 +121,7 @@ export interface BannerConfig {
 export interface CategoryItem {
   id: string
   label: string
+  logo?: string
 }
 
 export interface CategoryGridConfig {
@@ -120,7 +130,7 @@ export interface CategoryGridConfig {
   items: CategoryItem[]
 }
 
-export type HomeSection =
+export type HomeSectionV1 =
   | {
       id: string
       type: "banner"
@@ -150,8 +160,35 @@ export type HomeSection =
       config: unknown
     }
 
-export interface HomeApiResponse {
+/* ================================
+   HOME PAYLOAD V1
+================================ */
+
+export interface HomeApiResponseV1 {
   designTokens: DesignTokens
   screenConfig: ScreenConfig
-  sections: HomeSection[]
+  sections: HomeSectionV1[]
+}
+
+/* ================================
+   HOME PAYLOAD V2 (future)
+================================ */
+
+export interface HomeApiResponseV2 {
+  page: {
+    theme?: string
+    blocks: {
+      blockType: string
+      data: unknown
+    }[]
+  }
+}
+
+/* ================================
+   ROOT API RESPONSE
+================================ */
+
+export interface HomeApiResponse {
+  metaData: ApiMetaData
+  payload: HomeApiResponseV1 | HomeApiResponseV2
 }

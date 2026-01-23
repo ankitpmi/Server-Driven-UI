@@ -1,13 +1,13 @@
 import { View, Text, FlatList } from "react-native"
 
 import { SectionWrapper } from "./SectionWrapper"
-import { CategoryGridConfig, DesignTokens, LayoutConfig } from "../types"
+import { CategoryGridConfigV1, DesignTokens, LayoutConfig } from "../types"
 import { resolveLayoutBox } from "../utils"
 
 interface CategoryGridProps {
   layout?: LayoutConfig
   tokens?: DesignTokens
-  config?: CategoryGridConfig
+  config?: CategoryGridConfigV1
 }
 
 export function CategoryGrid({ config, layout, tokens }: CategoryGridProps) {

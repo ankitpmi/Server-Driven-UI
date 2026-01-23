@@ -12,9 +12,11 @@ async function getHome(festival = "default") {
 
   return {
     metaData: data.metaData,
-    designTokens: data.designTokens,
-    screenConfig: data.screenConfig,
-    sections,
+    payload: {
+      designTokens: data.designTokens,
+      screenConfig: data.screenConfig,
+      sections,
+    },
   }
 }
 

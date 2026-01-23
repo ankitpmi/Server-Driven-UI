@@ -1,9 +1,13 @@
-export async function fetchHome(festival = "default") {
-  const res = await fetch(`http://192.168.1.148:3000/api/home`)
+import { HomeApiResponse } from "../types"
+
+export async function fetchHome(
+  festival: string = "default",
+): Promise<HomeApiResponse> {
+  const res = await fetch(
+    `http://192.168.1.148:3000/api/home?festival=${festival}`,
+  )
 
   const json = await res.json()
 
-  // console.log("RES ::: ", JSON.stringify(json.data, null, 2))
-
-  return json.data // ✅ return ONLY sections
+  return json.data as HomeApiResponse
 }

@@ -1,1 +1,4 @@
-export * from "./component.type"
+export * from "./api.type"
+export * from "./v1/home.v1.type"
+export * from "./v2/home.v2.type"
+export * from "./common"
