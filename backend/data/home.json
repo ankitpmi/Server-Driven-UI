@@ -211,7 +211,7 @@
 
       "layout": {
         "container": {
-          "padding": "md",
+          "padding": "lg",
           "borderRadius": "md",
           "marginTop": "md",
           "marginStart": "lg",
@@ -220,11 +220,6 @@
           "border": {
             "width": 1,
             "color": "border"
-          },
-
-          "background": {
-            "backgroundType": "image",
-            "value": "https://png.pngtree.com/thumb_back/fh260/background/20191226/pngtree-firework-celebration-party-new-year-background-image_325579.jpg"
           }
         },
 
@@ -238,50 +233,93 @@
           },
           "borderRadius": "sm",
 
-          "marginTop": "md",
-          "marginStart": "sm",
-          "marginEnd": "sm"
+          "marginTop": "md"
         }
       },
 
       "config": {
-        "title": "Shop Laptops by Brand",
+        "title": "Fashion for you",
         "scroll": "horizontal",
         "items": [
           {
-            "id": "apple_macbook",
-            "label": "Apple MacBook",
-            "logo": "https://picsum.photos/seed/macbook/120"
+            "id": "p1",
+            "name": "Men Slim Fit Casual Shirt",
+            "description": "Soft cotton slim fit shirt",
+            "price": 1499,
+            "discount": 40,
+            "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf"
           },
           {
-            "id": "dell",
-            "label": "Dell",
-            "logo": "https://picsum.photos/seed/dell/120"
+            "id": "p2",
+            "name": "Blazer on Hanger",
+            "description": "Lightweight floral printed dress",
+            "price": 2199,
+            "discount": 35,
+            "image": "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg"
           },
           {
-            "id": "hp",
-            "label": "HP",
-            "logo": "https://picsum.photos/seed/hp/120"
+            "id": "p3",
+            "name": "Men Regular Fit Jeans",
+            "description": "Stretchable denim jeans",
+            "price": 1999,
+            "discount": 30,
+            "image": "https://images.unsplash.com/photo-1542272604-787c3835535d"
           },
           {
-            "id": "lenovo",
-            "label": "Lenovo",
-            "logo": "https://picsum.photos/seed/lenovo/120"
+            "id": "p4",
+            "name": "Women High Waist Jeans",
+            "description": "Comfortable high waist fit",
+            "price": 2499,
+            "discount": 45,
+            "image": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246"
           },
           {
-            "id": "asus",
-            "label": "ASUS",
-            "logo": "https://picsum.photos/seed/asus/120"
+            "id": "p5",
+            "name": "Men Printed T-Shirt",
+            "description": "Premium cotton graphic tee",
+            "price": 899,
+            "discount": 50,
+            "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
           },
           {
-            "id": "acer",
-            "label": "Acer",
-            "logo": "https://picsum.photos/seed/acer/120"
+            "id": "p6",
+            "name": "Women Casual Top",
+            "description": "Round neck daily wear top",
+            "price": 1299,
+            "discount": 40,
+            "image": "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb"
           },
           {
-            "id": "msi",
-            "label": "MSI",
-            "logo": "https://picsum.photos/seed/msi/120"
+            "id": "p7",
+            "name": "Men Hooded Sweatshirt",
+            "description": "Warm fleece hoodie",
+            "price": 2599,
+            "discount": 35,
+            "image": "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg"
+          },
+          {
+            "id": "p8",
+            "name": "Women Knit Sweater",
+            "description": "Soft winter knit sweater",
+            "price": 2799,
+            "discount": 30,
+            "image": "https://images.unsplash.com/photo-1512436991641-6745cdb1723f"
+          },
+          {
+            "id": "p9",
+            "name": "Men Running Shoes",
+            "description": "Lightweight sports shoes",
+            "price": 3999,
+            "discount": 45,
+            "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+          },
+          {
+            "id": "p10",
+            "name": "Women Stylish Handbag",
+            "description": "Premium leather finish bag",
+            "price": 3499,
+            "discount": 50,
+            "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
           }
         ]
       }

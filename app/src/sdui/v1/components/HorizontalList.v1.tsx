@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native"
+import { Text, FlatList, Image, Pressable } from "react-native"
 
 import { SectionWrapper } from "../../shared"
 import { CategoryGridConfigV1, DesignTokens, LayoutConfig } from "@/src/types"
@@ -17,9 +17,20 @@ export function HorizontalListV1({
 }: HorizontalListV1Props) {
   const commonStyle = resolveLayoutBox(layout?.item, tokens)
 
+  const lastIndex = (config?.items?.length ?? 0) - 1
+
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
-      {config && config?.title && <Text>{config.title}</Text>}
+      {config && config?.title && (
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: "600",
+            marginBottom: 10,
+          }}>
+          {config.title}
+        </Text>
+      )}
 
       <FlatList
         data={config?.items}
@@ -27,18 +38,25 @@ export function HorizontalListV1({
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         contentContainerStyle={{}}
-        renderItem={({ item }) => (
-          <View
+        renderItem={({ item, index }) => (
+          <Pressable
             style={[
               commonStyle,
               {
                 // backgroundColor: resolveColor(layout?.item?.background, tokens),
                 alignItems: "center",
                 justifyContent: "center",
+                paddingVertical: 0,
+                paddingHorizontal: 0,
+                marginRight: lastIndex === index ? 0 : 16,
               },
             ]}>
-            <Text style={{ textAlign: "center" }}>{item.label}</Text>
-          </View>
+            <Image
+              source={{ uri: item.image }}
+              style={{ width: "100%", height: "100%" }}
+            />
+            {/* <Text style={{ textAlign: "center" }}>{item.label}</Text> */}
+          </Pressable>
         )}
       />
     </SectionWrapper>

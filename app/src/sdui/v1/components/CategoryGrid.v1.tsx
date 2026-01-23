@@ -19,7 +19,16 @@ export function CategoryGridV1({
 
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
-      {config && config.title && <Text>{config?.title}</Text>}
+      {config && config.title && (
+        <Text
+          style={{
+            fontSize: 16,
+            fontWeight: "600",
+            marginBottom: 10,
+          }}>
+          {config?.title}
+        </Text>
+      )}
 
       <FlatList
         data={config?.items}

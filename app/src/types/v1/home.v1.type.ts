@@ -1,5 +1,5 @@
 import { DesignTokens, LayoutConfig } from "../common"
-import { CategoryGridConfig } from "../component.type"
+import { ProductType } from "../component.type"
 
 export interface ScreenConfigV1 {
   id: string
@@ -24,7 +24,7 @@ export interface CategoryItemV1 {
 export interface CategoryGridConfigV1 {
   title?: string
   columns?: number
-  items: CategoryItemV1[]
+  items: ProductType[]
 }
 
 export type HomeSectionV1 =
