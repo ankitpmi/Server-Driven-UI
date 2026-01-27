@@ -1,5 +1,6 @@
 const express = require("express")
-const homeRoutes = require("./routes/home.routes")
+
+const apiRoutes = require("./routes")
 
 const app = express()
 
@@ -9,6 +10,6 @@ app.get("/health", (_, res) => {
   res.json({ status: "ok" })
 })
 
-app.use("/api/home", homeRoutes)
+app.use("/api", apiRoutes)
 
 module.exports = app
