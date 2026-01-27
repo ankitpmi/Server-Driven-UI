@@ -15,7 +15,6 @@ import {
 } from "@expo/vector-icons"
 import { SectionWrapper } from "../../shared"
 import { CategoryGridConfigV1, DesignTokens, LayoutConfig } from "@/src/types"
-import { CategoryGridConfig } from "@/src/types/component.type"
 
 type IconFamily =
   | "MaterialCommunityIcons"

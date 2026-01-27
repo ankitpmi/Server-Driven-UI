@@ -1,9 +1,8 @@
 import { useHomeScreen } from "@/src/hooks"
 import { ScreenRenderer } from "@/src/engine"
-import { AppLayout } from "@/src/components"
 
 export default function Home() {
-  const { data } = useHomeScreen()
+  const { data, isLoading } = useHomeScreen()
 
   if (!data) return null
 
