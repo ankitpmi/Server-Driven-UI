@@ -1,4 +1,4 @@
-const { getHome } = require("../services/home.service")
+const { getHome } = require("../../services/v1/home.service")
 
 async function fetchHome(req, res) {
   const { festival = "default" } = req.query

@@ -1,5 +1,5 @@
 const express = require("express")
-const { fetchHome } = require("../../controllers/home.controller")
+const { fetchHome } = require("../../controllers/v1/home.controller")
 
 const router = express.Router()
 

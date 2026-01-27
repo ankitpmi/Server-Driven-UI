@@ -1,5 +1,5 @@
 // import { getHomeData } from "../repositories/home.repo.js"
-const { getHomeData } = require("../db/home.repo")
+const { getHomeData } = require("../../db/v1/home.db")
 
 async function getHome(festival = "default") {
   const data = await getHomeData()
