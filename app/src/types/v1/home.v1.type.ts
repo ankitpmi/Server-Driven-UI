@@ -13,6 +13,7 @@ export interface ScreenConfigV1 {
 export interface BannerConfigV1 {
   title?: string
   image: string
+  api?: string
 }
 
 export interface CategoryItemV1 {

@@ -84,7 +84,7 @@
         }
       },
       "config": {
-        "image": "https://www.shutterstock.com/image-vector/super-sale-promotional-banner-promo-600nw-2570295095.jpg"
+        "api": "banner"
       }
     },
     {
