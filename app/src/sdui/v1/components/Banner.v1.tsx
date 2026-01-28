@@ -1,4 +1,4 @@
-import { Dimensions, Image, Text, View } from "react-native"
+import { Text, View } from "react-native"
 
 import { SectionItemWrapper, SectionWrapper } from "../../shared"
 import React, { useCallback, useEffect, useState } from "react"
@@ -15,8 +15,6 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated"
-
-const { width } = Dimensions.get("window")
 
 interface BannerV1Props {
   layout?: LayoutConfig
