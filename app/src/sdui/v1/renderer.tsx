@@ -1,9 +1,13 @@
 import React from "react"
-import { FlatList } from "react-native"
+import { FlatList, View } from "react-native"
 
 import { registryV1 } from "./registry"
 import { AppLayout } from "@/src/components"
-import { HomePayloadV1 } from "@/src/types"
+import {
+  BannerConfigV1,
+  CategoryGridConfigV1,
+  HomePayloadV1,
+} from "@/src/types"
 import { resolveColor } from "@/src/utils"
 
 export function renderV1(data: HomePayloadV1) {
@@ -43,12 +47,14 @@ export function renderV1(data: HomePayloadV1) {
           if (!HeaderComponent) return null
 
           return (
+            // <View style={{ backgroundColor: "green" }}>
             <HeaderComponent
               key={headerSection.id}
               layout={headerSection.layout}
-              config={headerSection.config}
+              config={headerSection.config as CategoryGridConfigV1}
               tokens={data.designTokens}
             />
+            // </View>
           )
         }}
         renderItem={({ item }) => {
