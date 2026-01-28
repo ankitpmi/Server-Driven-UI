@@ -70,14 +70,14 @@ export function HorizontalListV1({
 
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
-      {config && config?.title && (
+      {horizontalListData && horizontalListData?.title && (
         <Text
           style={{
             fontSize: 16,
             fontWeight: "600",
             marginBottom: 10,
           }}>
-          {config.title}
+          {horizontalListData.title}
         </Text>
       )}
 
@@ -116,7 +116,6 @@ export function HorizontalListV1({
               onError={() => setImageLoading(false)}
               style={[{ width: "100%", height: "100%" }, animatedStyle]}
             />
-            {/* <Text style={{ textAlign: "center" }}>{item.label}</Text> */}
           </Pressable>
         )}
       />

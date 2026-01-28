@@ -80,7 +80,11 @@
           "borderRadius": "md",
           "marginTop": "xl",
           "marginBottom": "md",
-          "height": 180
+          "height": 180,
+          "background": {
+            "backgroundType": "solidColor",
+            "value": "muted"
+          }
         }
       },
       "config": {
@@ -117,7 +121,11 @@
 
           "borderRadius": "sm",
           "height": 80,
-          "margin": "sm"
+          "margin": "sm",
+          "background": {
+            "backgroundType": "solidColor",
+            "value": "muted"
+          }
         }
       },
       "config": {
@@ -150,11 +158,14 @@
 
           "borderRadius": "sm",
           "height": 140,
-          "margin": "sm"
+          "margin": "sm",
+          "background": {
+            "backgroundType": "solidColor",
+            "value": "muted"
+          }
         }
       },
       "config": {
-        "title": "Shop by Category",
         "columns": 3,
         "api": "shopbyCategory"
       }

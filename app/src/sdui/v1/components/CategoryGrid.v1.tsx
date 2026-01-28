@@ -69,14 +69,14 @@ export function CategoryGridV1({
 
   return (
     <SectionWrapper layout={layout} tokens={tokens}>
-      {config && config.title && (
+      {categoryGridData && categoryGridData.title && (
         <Text
           style={{
             fontSize: 16,
             fontWeight: "600",
             marginBottom: 10,
           }}>
-          {config?.title}
+          {categoryGridData?.title}
         </Text>
       )}
 
