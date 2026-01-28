@@ -50,7 +50,7 @@ export function HorizontalListV1({
     } catch (error) {
       console.error("Failed to fetch banner data:", error)
     } finally {
-      // setLoading(false)
+      setLoading(false)
     }
   }, [config?.api])
 

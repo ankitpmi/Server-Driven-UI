@@ -28,8 +28,8 @@ export const BannerV1 = React.memo(
 
     const [bannerData, setBannerData] = useState<BannerPayload | null>(null)
 
-    const [loading, setLoading] = useState(true)
-    const [imageLoading, setImageLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
+    const [imageLoading, setImageLoading] = useState(false)
 
     const getBannerData = useCallback(async () => {
       if (!config.api) return
@@ -48,7 +48,7 @@ export const BannerV1 = React.memo(
       } catch (error) {
         console.error("Failed to fetch banner data:", error)
       } finally {
-        // setLoading(false)
+        setLoading(false)
       }
     }, [config.api])
 
@@ -62,6 +62,9 @@ export const BannerV1 = React.memo(
       }
     })
 
+    console.log("loading: ", loading)
+    console.log("imageLoading: ", imageLoading)
+    console.log("bannerData: ", bannerData)
     const showSkeleton = loading || imageLoading || !bannerData
 
     return (
