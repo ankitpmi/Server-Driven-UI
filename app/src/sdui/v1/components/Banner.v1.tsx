@@ -20,10 +20,11 @@ interface BannerV1Props {
   layout?: LayoutConfig
   tokens?: DesignTokens
   config: BannerConfigV1
+  apiVersion?: string
 }
 
 export const BannerV1 = React.memo(
-  ({ config, layout, tokens }: BannerV1Props) => {
+  ({ config, layout, tokens, apiVersion }: BannerV1Props) => {
     const imageOpacity = useSharedValue(0)
 
     const [bannerData, setBannerData] = useState<BannerPayload | null>(null)
@@ -36,7 +37,7 @@ export const BannerV1 = React.memo(
 
       setLoading(true)
       try {
-        const bannerRes = await fetchBanner()
+        const bannerRes = await fetchBanner(apiVersion || "v1")
 
         if (!bannerRes || !bannerRes.payload) {
           throw new Error("Invalid banner response")

@@ -15,6 +15,7 @@ interface CategoryGridV1Props {
   layout?: LayoutConfig
   tokens?: DesignTokens
   config?: CategoryGridConfigV1
+  apiVersion?: string
 }
 
 const GAP = 12

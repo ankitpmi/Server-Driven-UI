@@ -16,6 +16,7 @@ interface HorizontalListV1Props {
   layout?: LayoutConfig
   tokens?: DesignTokens
   config?: CategoryGridConfigV1
+  apiVersion?: string
 }
 
 export function HorizontalListV1({

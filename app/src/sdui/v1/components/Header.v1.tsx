@@ -60,6 +60,7 @@ interface HeaderV1Props {
   layout?: LayoutConfig
   tokens?: DesignTokens
   config?: CategoryGridConfigV1
+  apiVersion?: string
 }
 
 const categories: CategoryItem[] = [

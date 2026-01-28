@@ -74,6 +74,7 @@ interface BannerV2Props {
   layout?: LayoutConfig
   tokens?: DesignTokens
   config: BannerConfigV1
+  apiVersion?: string
 }
 
 export const BannerV2 = React.memo(() => {

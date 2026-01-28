@@ -53,11 +53,13 @@ export function renderV1(data: HomePayloadV1) {
               layout={headerSection.layout}
               config={headerSection.config as CategoryGridConfigV1}
               tokens={data.designTokens}
+              apiVersion={headerSection.version}
             />
             // </View>
           )
         }}
         renderItem={({ item }) => {
+          console.log("item: ", item)
           const Component = registryV1[item.type]
           if (!Component) return null
 
@@ -67,6 +69,7 @@ export function renderV1(data: HomePayloadV1) {
               layout={item.layout}
               config={item.config}
               tokens={data.designTokens}
+              apiVersion={item.version}
             />
           )
         }}
