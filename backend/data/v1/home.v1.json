@@ -299,6 +299,7 @@
       "config": {
         "title": "Fashion for you",
         "scroll": "horizontal",
+        "api": "fashionForYou",
         "items": [
           {
             "id": "p1",

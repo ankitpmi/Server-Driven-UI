@@ -4,6 +4,7 @@
     "api": "fashionForYou"
   },
   "data": {
+    "title": "Fashion for you",
     "items": [
       {
         "id": "p1",
