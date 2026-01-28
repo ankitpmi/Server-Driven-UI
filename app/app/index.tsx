@@ -2,9 +2,15 @@ import { useHomeScreen } from "@/src/hooks"
 import { ScreenRenderer } from "@/src/engine"
 
 export default function Home() {
-  const { data, isLoading } = useHomeScreen()
+  const { data } = useHomeScreen()
 
   if (!data) return null
+
+  // return (
+  //   <SafeAreaView style={{ flex: 1 }}>
+  //     <BannerV2 />
+  //   </SafeAreaView>
+  // )
 
   return <ScreenRenderer data={data} />
 
