@@ -62,9 +62,6 @@ export const BannerV1 = React.memo(
       }
     })
 
-    console.log("loading: ", loading)
-    console.log("imageLoading: ", imageLoading)
-    console.log("bannerData: ", bannerData)
     const showSkeleton = loading || imageLoading || !bannerData
 
     return (

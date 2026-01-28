@@ -5,7 +5,7 @@
   },
   "data": {
     "title": "Deal of the day",
-    "columns": 3,
+
     "items": [
       {
         "id": "deal1",

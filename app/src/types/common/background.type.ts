@@ -13,4 +13,5 @@ export type ScreenBackground =
       start?: [number, number]
       end?: [number, number]
       locations?: [number, number, ...number[]] | null
+      value?: string
     }
