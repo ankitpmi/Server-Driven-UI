@@ -33,7 +33,7 @@ export function HorizontalListV1({
   const [loading, setLoading] = useState(true)
   const [imageLoading, setImageLoading] = useState(true)
 
-  const getBannerData = useCallback(async () => {
+  const getHorizontalListData = useCallback(async () => {
     if (!config?.api) return
 
     setLoading(true)
@@ -55,8 +55,8 @@ export function HorizontalListV1({
   }, [config?.api])
 
   useEffect(() => {
-    getBannerData()
-  }, [getBannerData])
+    getHorizontalListData()
+  }, [getHorizontalListData])
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
