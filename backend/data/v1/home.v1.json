@@ -123,6 +123,7 @@
       "config": {
         "title": "Deal of the day",
         "columns": 3,
+        "api": "dealOfDay",
         "items": [
           {
             "id": "deal1",
@@ -212,6 +213,7 @@
       "config": {
         "title": "Shop by Category",
         "columns": 3,
+        "api": "shopbyCategory",
         "items": [
           {
             "id": "tv-tcl-1",

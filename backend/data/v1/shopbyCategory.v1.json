@@ -1,0 +1,52 @@
+{
+  "metaData": {
+    "version": "v1",
+    "api": "shopbyCategory"
+  },
+  "data": {
+    "items": [
+      {
+        "id": "tv-tcl-1",
+        "category": "television",
+        "company": "TCL",
+        "name": "TCL 50 inch 4K UHD Smart TV",
+        "description": "Dolby Vision | Android TV",
+        "price": 42999,
+        "discount": 42,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkvJZRsuShaWnZzMI5sjZi6aAeezy9QbA-1g&s"
+      },
+
+      {
+        "id": "tv-lg-1",
+        "category": "television",
+        "company": "LG",
+        "name": "LG 43 inch Full HD Smart LED TV",
+        "description": "WebOS | AI Sound | ThinQ",
+        "price": 38999,
+        "discount": 30,
+        "image": "https://www.lg.com/content/dam/channel/wcms/in/2025_ms_lg-com/category-banner/TV-Soundbar/gp1/features/category/banner-qned92-2025-category-features-m.jpg"
+      },
+
+      {
+        "id": "tv-sony-1",
+        "category": "television",
+        "company": "Sony",
+        "name": "Sony Bravia 65 inch 4K Google TV",
+        "description": "XR Processor | Dolby Atmos",
+        "price": 124999,
+        "discount": 40,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEnJZJgaPICr928ts3OWLQh01H_VIRqsn4Zg&s"
+      },
+      {
+        "id": "tv-samsung-1",
+        "category": "television",
+        "company": "Samsung",
+        "name": "Samsung 55 inch Crystal 4K UHD Smart TV",
+        "description": "HDR10+ | Voice Assistant | PurColor",
+        "price": 58999,
+        "discount": 35,
+        "image": "https://img.global.news.samsung.com/my/wp-content/uploads/2023/05/2023-VD-Neo-QLED-8K_Early-order_CDM-Page_FA_PC_1440x720_230502.jpg"
+      }
+    ]
+  }
+}

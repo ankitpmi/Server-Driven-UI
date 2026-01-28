@@ -6,6 +6,7 @@ export interface BannerApiResponse {
 export interface BannerApiData {
   metaData: {
     version: "v1"
+    api: string
   }
   payload: BannerPayload
 }
