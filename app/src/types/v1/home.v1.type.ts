@@ -26,6 +26,7 @@ export interface CategoryGridConfigV1 {
   title?: string
   columns?: number
   items: ProductType[]
+  api?: string
 }
 
 export type HomeSectionV1 =
