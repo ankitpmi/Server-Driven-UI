@@ -1,9 +1,11 @@
-import { BannerApiData, BannerApiResponse } from "../types"
+import { BannerVersion, BannerVersionMap } from "../types"
 
-export async function fetchBanner(version: string): Promise<BannerApiData> {
+export async function fetchBanner<V extends BannerVersion>(
+  version: V,
+): Promise<BannerVersionMap[V]> {
   const res = await fetch(`http://192.168.1.148:3000/api/${version}/banner`)
 
-  const json: BannerApiResponse = await res.json()
+  const json = await res.json()
 
-  return json.data as BannerApiData
+  return json.data
 }

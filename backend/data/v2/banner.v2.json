@@ -1,0 +1,35 @@
+{
+  "metaData": {
+    "version": "v2",
+    "api": "banner"
+  },
+  "data": {
+    "bannerData": [
+      {
+        "id": "1",
+        "image": "https://png.pngtree.com/thumb_back/fh260/background/20220211/pngtree-combo-offer-wide-banner-image_986067.jpg"
+      },
+      {
+        "id": "4",
+        "image": "https://img.freepik.com/free-vector/realism-hand-drawn-horizontal-banner_23-2150203461.jpg?semt=ais_hybrid&w=740&q=80"
+      },
+      {
+        "id": "2",
+        "image": "https://www.shutterstock.com/image-vector/super-sale-promotional-banner-promo-600nw-2570295095.jpg"
+      },
+      {
+        "id": "5",
+        "image": "https://i.pinimg.com/originals/f0/f9/e4/f0f9e45724771f16745ad3f6f640d3ce.jpg"
+      },
+      {
+        "id": "3",
+        "image": "https://static.vecteezy.com/system/resources/previews/011/644/609/non_2x/big-diwali-festival-sale-discount-banner-design-with-diya-illustration-vector.jpg"
+      },
+
+      {
+        "id": "6",
+        "image": "https://img.freepik.com/free-vector/fashion-trends-sale-banner-template_23-2150769839.jpg?semt=ais_hybrid&w=740&q=80"
+      }
+    ]
+  }
+}

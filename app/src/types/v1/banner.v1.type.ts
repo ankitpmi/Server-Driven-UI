@@ -1,16 +1,14 @@
-export interface BannerApiResponse {
+export interface BannerV1ApiResponse {
   success: boolean
-  data: BannerApiData
+  data: BannerV1ApiData
 }
 
-export interface BannerApiData {
+export interface BannerV1ApiData {
   metaData: {
     version: "v1"
-    api: string
+    api: "banner"
   }
-  payload: BannerPayload
-}
-
-export interface BannerPayload {
-  image: string
+  payload: {
+    image: string
+  }
 }
