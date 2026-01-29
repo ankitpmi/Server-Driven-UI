@@ -72,19 +72,11 @@
       "festival": "default",
       "active": true,
       "layout": {
-        "container": {
-          "paddingStart": "lg",
-          "paddingEnd": "lg"
-        },
+        "container": {},
         "item": {
           "borderRadius": "md",
-
           "marginBottom": "md",
-
-          "background": {
-            "backgroundType": "solidColor",
-            "value": "muted"
-          }
+          "height": 180
         }
       },
       "config": {

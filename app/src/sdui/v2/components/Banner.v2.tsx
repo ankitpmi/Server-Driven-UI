@@ -25,7 +25,7 @@ import Carousel, {
 
 const { width } = Dimensions.get("window")
 
-const PAGE_WIDTH = width - 32
+const PAGE_WIDTH = width
 
 interface BannerV2Props {
   layout?: LayoutConfig
@@ -43,6 +43,7 @@ export const BannerV2 = React.memo(
     })
 
     const [loading, setLoading] = useState(false)
+    const [imageLoading, setImageLoading] = useState(false)
 
     const getBannerData = useCallback(async () => {
       if (!config.api) return
@@ -94,6 +95,8 @@ export const BannerV2 = React.memo(
       }
     })
 
+    const isLoading = loading || imageLoading
+
     return (
       <SectionWrapper
         layout={layout}
@@ -101,6 +104,7 @@ export const BannerV2 = React.memo(
         containerStyle={{ marginBottom: 10 }}>
         <>
           <SectionItemWrapper layout={layout} tokens={tokens}>
+            {isLoading && <BannerSkeleton />}
             <Carousel
               ref={ref}
               {...baseOptions}
@@ -116,18 +120,22 @@ export const BannerV2 = React.memo(
                 <View
                   style={{
                     flex: 1,
+                    marginHorizontal: 16,
                   }}>
                   <Animated.Image
                     source={{ uri: item.image }}
                     resizeMode="cover"
                     onLoadStart={() => {
                       imageOpacity.value = 0
+                      setImageLoading(true)
                     }}
                     onLoadEnd={() => {
                       imageOpacity.value = withTiming(1, {
                         duration: 250,
                       })
+                      setImageLoading(false)
                     }}
+                    onError={() => setImageLoading(false)}
                     style={[
                       {
                         width: "100%",
@@ -140,30 +148,33 @@ export const BannerV2 = React.memo(
                   />
                 </View>
               )}
-              autoPlay
+              autoPlay={!isLoading}
               autoPlayInterval={2000}
               scrollAnimationDuration={1000}
             />
           </SectionItemWrapper>
-          <Pagination.Basic
-            progress={progress}
-            data={bannerData?.banners}
-            onPress={onPressPagination}
-            horizontal
-            dotStyle={{
-              width: 25,
-              height: 4,
-              backgroundColor: "#ccc",
-            }}
-            activeDotStyle={{
-              overflow: "hidden",
-              backgroundColor: "#4d4d4d",
-            }}
-            containerStyle={{
-              gap: 10,
-              marginBottom: 10,
-            }}
-          />
+
+          {!isLoading && (
+            <Pagination.Basic
+              progress={progress}
+              data={bannerData?.banners}
+              onPress={onPressPagination}
+              horizontal
+              dotStyle={{
+                width: 25,
+                height: 4,
+                backgroundColor: "#ccc",
+              }}
+              activeDotStyle={{
+                overflow: "hidden",
+                backgroundColor: "#4d4d4d",
+              }}
+              containerStyle={{
+                gap: 10,
+                marginBottom: 10,
+              }}
+            />
+          )}
         </>
         {/* // )} */}
         {/* </View> */}
@@ -172,3 +183,31 @@ export const BannerV2 = React.memo(
     )
   },
 )
+
+const BannerSkeleton = () => {
+  // console.log("calling !!!!")
+
+  return (
+    <View
+      style={{
+        height: "100%",
+        width: width - 32,
+        alignSelf: "center",
+      }}>
+      <Skeleton
+        isLoading={true}
+        layout={[
+          {
+            key: "banner",
+            // width: width - 32,
+            height: "100%",
+            width: "100%",
+            borderRadius: 10,
+            // marginBottom: 16,
+            // marginTop: 10,
+          },
+        ]}
+      />
+    </View>
+  )
+}
