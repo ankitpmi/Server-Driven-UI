@@ -5,9 +5,12 @@ import React, { useCallback, useEffect, useState } from "react"
 import { fetchBanner } from "@/src/services"
 import {
   BannerConfigV1,
-  BannerPayload,
+  BannerV1ApiData,
+  BannerVersion,
   DesignTokens,
   LayoutConfig,
+  mapBannerToUI,
+  UIBannerData,
 } from "@/src/types"
 import Skeleton from "react-native-reanimated-skeleton"
 import Animated, {
@@ -20,14 +23,14 @@ interface BannerV1Props {
   layout?: LayoutConfig
   tokens?: DesignTokens
   config: BannerConfigV1
-  apiVersion?: string
+  apiVersion?: BannerVersion
 }
 
 export const BannerV1 = React.memo(
   ({ config, layout, tokens, apiVersion }: BannerV1Props) => {
     const imageOpacity = useSharedValue(0)
 
-    const [bannerData, setBannerData] = useState<BannerPayload | null>(null)
+    const [bannerData, setBannerData] = useState<UIBannerData | null>(null)
 
     const [loading, setLoading] = useState(false)
     const [imageLoading, setImageLoading] = useState(false)
@@ -44,14 +47,14 @@ export const BannerV1 = React.memo(
         }
         // ⏳ delay UI update
         // await new Promise((resolve) => setTimeout(resolve, 1000))
-
-        setBannerData(bannerRes.payload)
+        const bannerUI = mapBannerToUI(bannerRes)
+        setBannerData(bannerUI)
       } catch (error) {
         console.error("Failed to fetch banner data:", error)
       } finally {
         setLoading(false)
       }
-    }, [config.api])
+    }, [apiVersion, config.api])
 
     useEffect(() => {
       getBannerData()
@@ -72,7 +75,7 @@ export const BannerV1 = React.memo(
 
           {bannerData && (
             <Animated.Image
-              source={{ uri: bannerData.image }}
+              source={{ uri: bannerData.banners.at(0)?.image }}
               resizeMode="cover"
               onLoadStart={() => {
                 imageOpacity.value = 0

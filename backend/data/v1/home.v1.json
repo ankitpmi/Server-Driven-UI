@@ -67,7 +67,7 @@
     {
       "id": "banner_default_1",
       "type": "banner",
-      "version": "v1",
+      "version": "v2",
       "order": 2,
       "festival": "default",
       "active": true,
@@ -78,9 +78,9 @@
         },
         "item": {
           "borderRadius": "md",
-          "marginTop": "xl",
+
           "marginBottom": "md",
-          "height": 180,
+
           "background": {
             "backgroundType": "solidColor",
             "value": "muted"

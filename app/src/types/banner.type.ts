@@ -7,3 +7,12 @@ export interface BannerVersionMap {
   v1: BannerV1ApiData
   v2: BannerV2ApiData
 }
+
+export interface UIBannerItem {
+  id: string
+  image: string
+}
+
+export interface UIBannerData {
+  banners: UIBannerItem[]
+}

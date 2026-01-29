@@ -7,3 +7,5 @@ export * from "./v1/banner.v1.type"
 export * from "./v1/horizontalList.v1.type"
 export * from "./v1/categoryGrid.v1.type"
 export * from "./banner.type"
+
+export * from "./DTO/banner.mapper"
