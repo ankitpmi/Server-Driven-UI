@@ -1,4 +1,4 @@
-import { Text, View, Dimensions } from "react-native"
+import { View, Dimensions } from "react-native"
 
 import { SectionItemWrapper, SectionWrapper } from "../../shared"
 import React, { useCallback, useEffect, useState } from "react"
@@ -16,8 +16,6 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
-  Extrapolation,
-  interpolate,
 } from "react-native-reanimated"
 
 import Carousel, {
@@ -45,7 +43,6 @@ export const BannerV2 = React.memo(
     })
 
     const [loading, setLoading] = useState(false)
-    const [imageLoading, setImageLoading] = useState(false)
 
     const getBannerData = useCallback(async () => {
       if (!config.api) return
@@ -97,15 +94,11 @@ export const BannerV2 = React.memo(
       }
     })
 
-    const showSkeleton = loading || imageLoading || !bannerData
-
     return (
       <SectionWrapper
         layout={layout}
         tokens={tokens}
         containerStyle={{ marginBottom: 10 }}>
-        {/* {showSkeleton && <BannerSkeleton />} */}
-        {/* <View style={{}}> */}
         <>
           <SectionItemWrapper layout={layout} tokens={tokens}>
             <Carousel
@@ -129,15 +122,12 @@ export const BannerV2 = React.memo(
                     resizeMode="cover"
                     onLoadStart={() => {
                       imageOpacity.value = 0
-                      setImageLoading(true)
                     }}
                     onLoadEnd={() => {
                       imageOpacity.value = withTiming(1, {
                         duration: 250,
                       })
-                      setImageLoading(false)
                     }}
-                    onError={() => setImageLoading(false)}
                     style={[
                       {
                         width: "100%",
@@ -158,9 +148,6 @@ export const BannerV2 = React.memo(
           <Pagination.Basic
             progress={progress}
             data={bannerData?.banners}
-            // dotStyle={{ backgroundColor: "#262626" }}
-            // activeDotStyle={{ backgroundColor: "#f1f1f1" }}
-            // containerStyle={{ gap: 5, marginBottom: 10 }}
             onPress={onPressPagination}
             horizontal
             dotStyle={{
@@ -185,30 +172,3 @@ export const BannerV2 = React.memo(
     )
   },
 )
-
-const BannerSkeleton = () => {
-  // console.log("calling !!!!")
-
-  return (
-    <View
-      style={{
-        height: "100%",
-        width: "100%",
-      }}>
-      <Skeleton
-        isLoading={true}
-        layout={[
-          {
-            key: "banner",
-            // width: width - 32,
-            height: "100%",
-            width: "100%",
-            borderRadius: 10,
-            // marginBottom: 16,
-            // marginTop: 10,
-          },
-        ]}
-      />
-    </View>
-  )
-}
