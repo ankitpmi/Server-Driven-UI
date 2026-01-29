@@ -1,4 +1,4 @@
-import { View, Dimensions } from "react-native"
+import { View, Dimensions, Pressable } from "react-native"
 
 import { SectionItemWrapper, SectionWrapper } from "../../shared"
 import React, { useCallback, useEffect, useState } from "react"
@@ -117,7 +117,7 @@ export const BannerV2 = React.memo(
               style={{ height: 180 }}
               data={bannerData?.banners}
               renderItem={({ item, index }) => (
-                <View
+                <Pressable
                   style={{
                     flex: 1,
                     marginHorizontal: 16,
@@ -146,7 +146,7 @@ export const BannerV2 = React.memo(
                       animatedStyle,
                     ]}
                   />
-                </View>
+                </Pressable>
               )}
               autoPlay={!isLoading}
               autoPlayInterval={2000}

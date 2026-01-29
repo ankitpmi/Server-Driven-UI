@@ -80,7 +80,13 @@
         }
       },
       "config": {
-        "api": "banner"
+        "api": "banner",
+        "action": {
+          "route": "OfferDetails",
+          "routeParams": {
+            "key": "id"
+          }
+        }
       }
     },
     {
