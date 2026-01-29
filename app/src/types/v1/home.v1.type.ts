@@ -1,5 +1,5 @@
 import { DesignTokens, LayoutConfig } from "../common"
-import { ProductType } from "../component.type"
+import { ProductType, SectionVersion } from "../component.type"
 
 export interface ScreenConfigV1 {
   id: string
@@ -37,7 +37,7 @@ export type HomeSectionV1 =
       layout?: LayoutConfig
       config: CategoryGridConfigV1
       active?: boolean
-      version?: string
+      version?: SectionVersion
     }
   | {
       id: string
@@ -46,7 +46,7 @@ export type HomeSectionV1 =
       layout?: LayoutConfig
       config: BannerConfigV1
       active?: boolean
-      version?: string
+      version?: SectionVersion
     }
   | {
       id: string
@@ -55,7 +55,7 @@ export type HomeSectionV1 =
       layout?: LayoutConfig
       config: CategoryGridConfigV1
       active?: boolean
-      version?: string
+      version?: SectionVersion
     }
   | {
       id: string
@@ -64,7 +64,7 @@ export type HomeSectionV1 =
       layout?: LayoutConfig
       config: CategoryGridConfigV1
       active?: boolean
-      version?: string
+      version?: SectionVersion
     }
 
 export interface HomePayloadV1 {

@@ -1,7 +1,7 @@
 import React from "react"
 import { FlatList, View } from "react-native"
 
-import { registryV1 } from "./registry"
+import { registry } from "./registry"
 import { AppLayout } from "@/src/components"
 import {
   BannerConfigV1,
@@ -10,7 +10,7 @@ import {
 } from "@/src/types"
 import { resolveColor } from "@/src/utils"
 
-export function renderV1(data: HomePayloadV1) {
+export function render(data: HomePayloadV1) {
   // 1️⃣ filter + sort
   const sections = data.sections
     .filter((s) => s.active !== false)
@@ -23,7 +23,7 @@ export function renderV1(data: HomePayloadV1) {
   const headerSection = sections[0]
   const listSections = sections.slice(1)
 
-  const HeaderComponent = registryV1[headerSection.type]
+  const HeaderComponent = registry[headerSection.type]?.[headerSection.version]
 
   return (
     <AppLayout
@@ -59,8 +59,8 @@ export function renderV1(data: HomePayloadV1) {
           )
         }}
         renderItem={({ item }) => {
-          console.log("item: ", item)
-          const Component = registryV1[item.type]
+          // console.log("item: ", item)
+          const Component = registry[item.type]?.[item.version]
           if (!Component) return null
 
           return (

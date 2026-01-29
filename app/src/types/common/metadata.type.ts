@@ -1,4 +1,6 @@
+import { SectionVersion } from "../component.type"
+
 export interface ApiMetaData {
   screen: string
-  uiVersion: "v1" | "v2" | string
+  uiVersion: SectionVersion
 }

@@ -8,3 +8,5 @@ export interface ProductType {
   image?: string
   label?: string
 }
+
+export type SectionVersion = "v1" | "v2" | string
