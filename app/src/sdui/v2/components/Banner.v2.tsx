@@ -176,17 +176,12 @@ export const BannerV2 = React.memo(
             />
           )}
         </>
-        {/* // )} */}
-        {/* </View> */}
-        {/* {config.title && <Text style={{ marginTop: 8 }}>{config.title}</Text>} */}
       </SectionWrapper>
     )
   },
 )
 
 const BannerSkeleton = () => {
-  // console.log("calling !!!!")
-
   return (
     <View
       style={{
@@ -199,12 +194,10 @@ const BannerSkeleton = () => {
         layout={[
           {
             key: "banner",
-            // width: width - 32,
+
             height: "100%",
             width: "100%",
             borderRadius: 10,
-            // marginBottom: 16,
-            // marginTop: 10,
           },
         ]}
       />

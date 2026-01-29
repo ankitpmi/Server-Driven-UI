@@ -5,7 +5,6 @@ import React, { useCallback, useEffect, useState } from "react"
 import { fetchBanner } from "@/src/services"
 import {
   BannerConfigV1,
-  BannerV1ApiData,
   BannerVersion,
   DesignTokens,
   LayoutConfig,
