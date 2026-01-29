@@ -14,6 +14,7 @@ export interface BannerConfigV1 {
   title?: string
   image: string
   api?: string
+  action?: Action
 }
 
 export interface CategoryItemV1 {
@@ -22,11 +23,17 @@ export interface CategoryItemV1 {
   logo?: string
 }
 
+export type Action = {
+  route: string
+  routeParams: Record<string, string>
+}
+
 export interface CategoryGridConfigV1 {
   title?: string
   columns?: number
   items: ProductType[]
   api?: string
+  action?: Action
 }
 
 export type HomeSectionV1 =

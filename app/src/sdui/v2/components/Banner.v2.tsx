@@ -23,6 +23,8 @@ import Carousel, {
   Pagination,
 } from "react-native-reanimated-carousel"
 
+import { useRouter } from "expo-router"
+
 const { width } = Dimensions.get("window")
 
 const PAGE_WIDTH = width
@@ -36,6 +38,8 @@ interface BannerV2Props {
 
 export const BannerV2 = React.memo(
   ({ config, layout, tokens, apiVersion }: BannerV2Props) => {
+    const router = useRouter()
+
     const imageOpacity = useSharedValue(0)
 
     const [bannerData, setBannerData] = useState<UIBannerData>({
@@ -89,6 +93,58 @@ export const BannerV2 = React.memo(
       })
     }
 
+    const onPressBannerItem = useCallback(
+      (item: Record<string, any>) => {
+        // router.navigate({
+        //   pathname: `/OfferDetails`,
+        //   params: {},
+        // })
+
+        const action = config?.action
+        console.log("action: ", action)
+
+        // ❌ no action
+        if (!action?.route) return
+
+        console.log("111111")
+
+        const route = action.route
+        console.log("route: ", route)
+        const routeParams = action.routeParams
+        console.log("routeParams: ", routeParams)
+
+        // ✅ no params → simple navigation
+        if (!routeParams || Object.keys(routeParams).length === 0) {
+          console.log("called")
+
+          router.navigate({
+            pathname: `/${route}` as any,
+          })
+          return
+        }
+
+        const params: Record<string, string> = {}
+        console.log("params: ", params)
+
+        for (const [paramName, itemKey] of Object.entries(routeParams)) {
+          const value = item?.[itemKey]
+
+          // ❌ missing param value → skip navigation
+          if (value) {
+            params[paramName] = String(value)
+          }
+        }
+
+        console.log("last >>>>")
+
+        router.navigate({
+          pathname: `/${route}` as any,
+          params,
+        })
+      },
+      [router, config?.action],
+    )
+
     const animatedStyle = useAnimatedStyle(() => {
       return {
         opacity: imageOpacity.value,
@@ -118,6 +174,7 @@ export const BannerV2 = React.memo(
               data={bannerData?.banners}
               renderItem={({ item, index }) => (
                 <Pressable
+                  onPress={onPressBannerItem}
                   style={{
                     flex: 1,
                     marginHorizontal: 16,
