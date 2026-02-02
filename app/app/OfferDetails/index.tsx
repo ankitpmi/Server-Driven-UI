@@ -8,6 +8,7 @@ const OfferDetails = React.memo(() => {
   return (
     <View style={styles.container}>
       <Text style={styles.screenTitle}>Offer Details Screen:</Text>
+      <Text style={styles.screenTitle}>Id: {params?.id}</Text>
     </View>
   )
 })
