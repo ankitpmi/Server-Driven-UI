@@ -4,7 +4,7 @@ import { useLocalSearchParams } from "expo-router"
 
 const OfferDetails = React.memo(() => {
   const params = useLocalSearchParams()
-  console.log("params: ", params)
+  console.log("params in OfferDetails screen: ", params)
   return (
     <View style={styles.container}>
       <Text style={styles.screenTitle}>Offer Details Screen:</Text>

@@ -10,6 +10,7 @@ import {
   LayoutConfig,
   mapBannerToUI,
   UIBannerData,
+  UIBannerItem,
 } from "@/src/types"
 import Skeleton from "react-native-reanimated-skeleton"
 import Animated, {
@@ -94,7 +95,7 @@ export const BannerV2 = React.memo(
     }
 
     const onPressBannerItem = useCallback(
-      (item: Record<string, any>) => {
+      (item: UIBannerItem) => {
         const action = config?.action
 
         // ❌ no action
@@ -103,6 +104,7 @@ export const BannerV2 = React.memo(
         const route = action.route
 
         const routeParams = action.routeParams
+        // console.log("routeParams: ", routeParams)
 
         // ✅ no params → simple navigation
         if (!routeParams || Object.keys(routeParams).length === 0) {
@@ -114,11 +116,13 @@ export const BannerV2 = React.memo(
 
         const params: Record<string, string> = {}
 
-        for (const [paramName, itemKey] of Object.entries(routeParams)) {
-          const value = item?.[itemKey]
+        for (const [paramName, itemKey] of Object.entries(routeParams) as [
+          string,
+          keyof UIBannerItem,
+        ][]) {
+          const value = item[itemKey]
 
-          // ❌ missing param value → skip navigation
-          if (value) {
+          if (value != null) {
             params[paramName] = String(value)
           }
         }
@@ -160,7 +164,7 @@ export const BannerV2 = React.memo(
               data={bannerData?.banners}
               renderItem={({ item, index }) => (
                 <Pressable
-                  onPress={onPressBannerItem}
+                  onPress={() => onPressBannerItem(item)}
                   style={{
                     flex: 1,
                     marginHorizontal: 16,
