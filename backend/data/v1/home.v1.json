@@ -84,7 +84,7 @@
         "action": {
           "route": "OfferDetails",
           "routeParams": {
-            "key": "id"
+            "key": ["id", "image"]
           }
         }
       }

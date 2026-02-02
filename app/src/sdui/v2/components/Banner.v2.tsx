@@ -37,6 +37,11 @@ interface BannerV2Props {
   apiVersion?: BannerVersion
 }
 
+type RouteParamsConfig = Record<
+  string,
+  keyof UIBannerItem | (keyof UIBannerItem)[]
+>
+
 export const BannerV2 = React.memo(
   ({ config, layout, tokens, apiVersion }: BannerV2Props) => {
     const router = useRouter()
@@ -94,37 +99,35 @@ export const BannerV2 = React.memo(
       })
     }
 
+    function isBannerKey(key: unknown): key is keyof UIBannerItem {
+      return key === "id" || key === "image"
+    }
+
     const onPressBannerItem = useCallback(
       (item: UIBannerItem) => {
         const action = config?.action
-
-        // ❌ no action
         if (!action?.route) return
 
-        const route = action.route
+        const { route, routeParams } = action
 
-        const routeParams = action.routeParams
-        // console.log("routeParams: ", routeParams)
-
-        // ✅ no params → simple navigation
         if (!routeParams || Object.keys(routeParams).length === 0) {
-          router.navigate({
-            pathname: `/${route}` as any,
-          })
+          router.navigate({ pathname: `/${route}` as any })
           return
         }
 
         const params: Record<string, string> = {}
 
-        for (const [paramName, itemKey] of Object.entries(routeParams) as [
-          string,
-          keyof UIBannerItem,
-        ][]) {
-          const value = item[itemKey]
+        for (const [, rawKeys] of Object.entries(routeParams)) {
+          const keys = Array.isArray(rawKeys) ? rawKeys : [rawKeys]
 
-          if (value != null) {
-            params[paramName] = String(value)
-          }
+          keys.forEach((key) => {
+            if (!isBannerKey(key)) return
+
+            const value = item[key]
+            if (value != null) {
+              params[key] = String(value)
+            }
+          })
         }
 
         router.navigate({
