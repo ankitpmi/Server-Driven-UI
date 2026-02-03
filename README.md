@@ -437,9 +437,404 @@ GET /api/v1/fashionForYou
 GET /api/v2/banner
 ```
 
-### JSON Data Structure
+## 📊 JSON Database Structure
 
-#### Home Screen Config (`data/v1/home.v1.json`)
+The backend uses JSON files as a database. Understanding the structure is crucial for creating and enhancing database entries.
+
+### Database File Organization
+
+```
+backend/data/
+├── v1/
+│   ├── home.v1.json          # Main home screen configuration
+│   ├── banner.v1.json         # Banner data (v1)
+│   ├── banner.v2.json         # Banner data (v2)
+│   ├── dealOfDay.v1.json      # Deal of the day products
+│   ├── fashionForYou.v1.json  # Fashion products
+│   └── shopbyCategory.v1.json # Category-based products
+└── v2/
+    └── banner.v2.json         # Banner data (v2)
+```
+
+### Home Screen JSON Schema (`data/v1/home.v1.json`)
+
+The home screen JSON is the main configuration file that defines the entire screen structure.
+
+#### Complete Schema
+
+```json
+{
+  "metaData": {
+    "screen": "home",           // Screen identifier
+    "uiVersion": "v1"           // API version (v1 or v2)
+  },
+  "designTokens": {
+    "spacing": {
+      "xs": 4,
+      "sm": 8,
+      "md": 12,
+      "lg": 16,
+      "xl": 24
+    },
+    "borderRadius": {
+      "sm": 6,
+      "md": 10,
+      "lg": 16
+    },
+    "colors": {
+      "primary": "#2874F0",
+      "surface": "#FFFFFF",
+      "border": "#E0E0E0",
+      "muted": "#F5F5F5",
+      "aliceBlue": "#cfe0fc",
+      "white": "#ffffff",
+      "black": "#000000"
+      // Add more colors as needed
+    }
+  },
+  "screenConfig": {
+    "id": "home_default",       // Screen config identifier
+    "template": "hero_first",   // Template name
+    "version": "v1",            // Screen config version
+    "statusBardBackground": "mutedCoral"  // Status bar color (from designTokens)
+  },
+  "sections": [
+    // Array of section objects (see Section Schema below)
+  ]
+}
+```
+
+#### Field Descriptions
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `metaData` | object | ✅ | Metadata about the screen |
+| `metaData.screen` | string | ✅ | Screen identifier (e.g., "home") |
+| `metaData.uiVersion` | string | ✅ | API version ("v1" or "v2") |
+| `designTokens` | object | ✅ | Design system tokens |
+| `designTokens.spacing` | object | ✅ | Spacing scale (xs, sm, md, lg, xl) |
+| `designTokens.borderRadius` | object | ✅ | Border radius scale (sm, md, lg) |
+| `designTokens.colors` | object | ✅ | Color palette |
+| `screenConfig` | object | ✅ | Screen-level configuration |
+| `screenConfig.id` | string | ✅ | Unique screen config ID |
+| `screenConfig.template` | string | ⚠️ | Template identifier |
+| `screenConfig.statusBardBackground` | string | ⚠️ | Color key from designTokens |
+| `sections` | array | ✅ | Array of section configurations |
+
+### Section Schema
+
+Each section in the `sections` array follows this structure:
+
+```json
+{
+  "id": "section_unique_id",
+  "type": "banner",
+  "version": "v1",
+  "order": 1,
+  "festival": "default",
+  "active": true,
+  "layout": {
+    "container": {},
+    "item": {}
+  },
+  "config": {}
+}
+```
+
+#### Section Field Details
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | ✅ | Unique identifier (format: `type_festival_order`) |
+| `type` | string | ✅ | Component type: `header`, `banner`, `category_grid`, `category_horizontal` |
+| `version` | string | ✅ | Component version: `v1` or `v2` (must exist in registry) |
+| `order` | number | ✅ | Display order (sorted ascending, 1 = first) |
+| `festival` | string | ✅ | Festival filter: `"default"` or specific festival (e.g., `"diwali"`) |
+| `active` | boolean | ⚠️ | Whether section is active (defaults to `true`) |
+| `layout` | object | ⚠️ | Styling configuration |
+| `layout.container` | object | ⚠️ | Container-level styling |
+| `layout.item` | object | ⚠️ | Item-level styling |
+| `config` | object | ✅ | Component-specific configuration |
+
+### Layout Configuration Schema
+
+The `layout` object controls styling for containers and items:
+
+```json
+{
+  "layout": {
+    "container": {
+      "padding": "md",                    // Spacing token or number
+      "paddingHorizontal": "lg",
+      "paddingVertical": "xl",
+      "margin": "sm",
+      "marginTop": "md",
+      "marginBottom": "md",
+      "marginStart": "lg",
+      "marginEnd": "lg",
+      "borderRadius": "md",               // Border radius token or number
+      "border": {
+        "width": 1,
+        "color": "border"                 // Color token
+      },
+      "background": {
+        "backgroundType": "gradient",     // "gradient" | "solidColor" | "image"
+        "colors": ["aliceBlue", "white"], // For gradient
+        "start": [1, 0],                  // Gradient start [x, y]
+        "end": [1, 1],                    // Gradient end [x, y]
+        "locations": [0, 0.9, 0.98],      // Optional: gradient stops
+        "value": "muted"                  // For solidColor (color token)
+      }
+    },
+    "item": {
+      "width": 140,
+      "height": 180,
+      "padding": "sm",
+      "margin": "sm",
+      "borderRadius": "sm",
+      "background": {
+        "backgroundType": "solidColor",
+        "value": "muted"
+      }
+    }
+  }
+}
+```
+
+### Component Config Schemas
+
+Each component type has its own `config` structure:
+
+#### 1. Header Component Config
+
+```json
+{
+  "type": "header",
+  "version": "v1",
+  "config": {}  // Usually empty, header uses default layout
+}
+```
+
+#### 2. Banner Component Config
+
+```json
+{
+  "type": "banner",
+  "version": "v1",  // or "v2" for carousel
+  "config": {
+    "api": "banner",  // API endpoint to fetch banner data
+    "title": "Welcome Offer",  // Optional title
+    "image": "https://...",     // Optional: direct image URL (if no API)
+    "action": {                 // Optional: navigation action
+      "route": "OfferDetails",
+      "routeParams": {
+        "key": ["id", "image"]  // Map banner item fields to route params
+      }
+    }
+  }
+}
+```
+
+#### 3. Category Grid Component Config
+
+```json
+{
+  "type": "category_grid",
+  "version": "v1",
+  "config": {
+    "title": "Deal of the Day",  // Optional section title
+    "columns": 3,                // Number of columns (default: 3)
+    "api": "dealOfDay"           // API endpoint to fetch products
+  }
+}
+```
+
+#### 4. Category Horizontal Component Config
+
+```json
+{
+  "type": "category_horizontal",
+  "version": "v1",
+  "config": {
+    "title": "Fashion for You",  // Optional section title
+    "api": "fashionForYou"       // API endpoint to fetch products
+  }
+}
+```
+
+### Component Data JSON Schemas
+
+These JSON files provide data for components that use `config.api`.
+
+#### Banner Data Schema
+
+**v1 Format** (`data/v1/banner.v1.json`):
+```json
+{
+  "metaData": {
+    "version": "v1",
+    "api": "banner"
+  },
+  "data": {
+    "image": "https://example.com/banner.jpg"
+  }
+}
+```
+
+**v2 Format** (`data/v2/banner.v2.json`):
+```json
+{
+  "metaData": {
+    "version": "v2",
+    "api": "banner"
+  },
+  "data": {
+    "bannerData": [
+      {
+        "id": "1",
+        "image": "https://example.com/banner1.jpg"
+      },
+      {
+        "id": "2",
+        "image": "https://example.com/banner2.jpg"
+      }
+    ]
+  }
+}
+```
+
+#### Product Data Schema
+
+Used by `category_grid` and `category_horizontal` components:
+
+```json
+{
+  "metaData": {
+    "version": "v1",
+    "api": "dealOfDay"  // or "fashionForYou", "shopbyCategory"
+  },
+  "data": {
+    "title": "Deal of the Day",  // Optional section title
+    "items": [
+      {
+        "id": "deal1",                    // Required: unique product ID
+        "category": "mobile",              // Optional: product category
+        "name": "Mobile Mega Deals",       // Optional: product name
+        "description": "Top smartphones",  // Optional: description
+        "price": 29999,                    // Optional: price in cents/units
+        "discount": 35,                    // Optional: discount percentage
+        "image": "https://...",            // Optional: product image URL
+        "label": "Best Deal"               // Optional: label text
+      }
+    ]
+  }
+}
+```
+
+### Creating New Database Entries
+
+#### Step 1: Add Section to Home Screen
+
+1. Open `backend/data/v1/home.v1.json`
+2. Add a new section to the `sections` array:
+
+```json
+{
+  "id": "my_section_default_1",
+  "type": "category_grid",
+  "version": "v1",
+  "order": 10,
+  "festival": "default",
+  "active": true,
+  "layout": {
+    "container": {
+      "padding": "md",
+      "marginHorizontal": "lg"
+    },
+    "item": {
+      "height": 100,
+      "borderRadius": "sm"
+    }
+  },
+  "config": {
+    "columns": 3,
+    "api": "myNewApi"
+  }
+}
+```
+
+#### Step 2: Create Component Data File
+
+1. Create `backend/data/v1/myNewApi.v1.json`
+2. Follow the product data schema:
+
+```json
+{
+  "metaData": {
+    "version": "v1",
+    "api": "myNewApi"
+  },
+  "data": {
+    "title": "My New Section",
+    "items": [
+      {
+        "id": "item1",
+        "name": "Product Name",
+        "image": "https://example.com/image.jpg"
+      }
+    ]
+  }
+}
+```
+
+#### Step 3: Create Backend Endpoint
+
+Follow the "Adding a New API Endpoint" guide in the Development section.
+
+### Validation Rules
+
+1. **Required Fields**: Always include `id`, `type`, `version`, `order`, `festival` in sections
+2. **Version Matching**: `version` must exist in component registry
+3. **Order Uniqueness**: No duplicate `order` values (within same festival)
+4. **ID Format**: Use semantic IDs: `{type}_{festival}_{order}` (e.g., `banner_diwali_1`)
+5. **Token References**: Layout values referencing tokens must exist in `designTokens`
+6. **API Endpoints**: `config.api` must have corresponding backend route and data file
+7. **Festival Filtering**: Use `"default"` for always-visible sections
+
+### Best Practices
+
+1. **Design Tokens**
+   - Keep token keys consistent across all JSON files
+   - Use semantic names (e.g., `primary`, `muted`, not `color1`, `color2`)
+   - Document new tokens in comments
+
+2. **Section IDs**
+   - Use descriptive, unique IDs
+   - Include festival in ID for festival-specific sections
+   - Format: `{type}_{festival}_{order}`
+
+3. **Layout Configuration**
+   - Use design tokens instead of hardcoded values
+   - Keep container and item layouts consistent
+   - Test with different screen sizes
+
+4. **Festival Management**
+   - Always include `"default"` festival sections
+   - Use specific festivals for seasonal content
+   - Backend filters: `festival === queryParam || festival === "default"`
+
+5. **Component Data**
+   - Keep product/item IDs unique
+   - Include all optional fields for better UX
+   - Use HTTPS URLs for images
+   - Optimize image sizes
+
+6. **Versioning**
+   - Use `v1` for stable components
+   - Create `v2` for new implementations
+   - Test both versions before deprecating
+
+### Example: Complete Home Screen Entry
 
 ```json
 {
@@ -463,6 +858,27 @@ GET /api/v2/banner
   },
   "sections": [
     {
+      "id": "home_header_v1",
+      "type": "header",
+      "version": "v1",
+      "order": 1,
+      "festival": "default",
+      "active": true,
+      "layout": {
+        "container": {
+          "paddingHorizontal": "lg",
+          "paddingVertical": "xl",
+          "background": {
+            "backgroundType": "gradient",
+            "colors": ["mutedCoral", "white"],
+            "start": [1, 0],
+            "end": [1, 1]
+          }
+        }
+      },
+      "config": {}
+    },
+    {
       "id": "banner_default_1",
       "type": "banner",
       "version": "v2",
@@ -470,7 +886,6 @@ GET /api/v2/banner
       "festival": "default",
       "active": true,
       "layout": {
-        "container": {},
         "item": {
           "height": 180,
           "borderRadius": "md",
