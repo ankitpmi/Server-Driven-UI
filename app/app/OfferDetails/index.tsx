@@ -1,14 +1,22 @@
 import { StyleSheet, Text, View, Image, ActivityIndicator } from "react-native"
-import React, { useEffect, useState } from "react"
-import { useLocalSearchParams } from "expo-router"
+import React, { useEffect, useState, useLayoutEffect } from "react"
+import { useLocalSearchParams, useNavigation } from "expo-router"
 import { fetchBanner } from "@/src/services"
 import { mapBannerToUI, UIBannerItem } from "@/src/types"
 
 const OfferDetails = React.memo(() => {
   const params = useLocalSearchParams()
+  const navigation = useNavigation()
   const [bannerItem, setBannerItem] = useState<UIBannerItem | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      title: "Offer Details",
+    })
+  }, [navigation])
 
   useEffect(() => {
     const fetchBannerItem = async () => {
