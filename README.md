@@ -88,7 +88,6 @@ Server-Driven-UI/
 │   │   ├── components/           # Shared UI components
 │   │   │   ├── AppLayout.tsx
 │   │   │   ├── SectionWrapper.tsx
-│   │   │   ├── SectionRenderer.tsx
 │   │   │   └── index.ts
 │   │   │
 │   │   ├── hooks/                # React hooks
