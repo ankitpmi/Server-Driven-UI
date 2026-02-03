@@ -1,22 +1,29 @@
-import { StyleSheet, Text, View, Image, ActivityIndicator } from "react-native"
-import React, { useEffect, useState, useLayoutEffect } from "react"
-import { useLocalSearchParams, useNavigation } from "expo-router"
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ActivityIndicator,
+  TouchableOpacity,
+} from "react-native"
+import React, { useEffect, useState } from "react"
+import { useLocalSearchParams, useRouter } from "expo-router"
+import { Ionicons } from "@expo/vector-icons"
 import { fetchBanner } from "@/src/services"
 import { mapBannerToUI, UIBannerItem } from "@/src/types"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 const OfferDetails = React.memo(() => {
   const params = useLocalSearchParams()
-  const navigation = useNavigation()
+  const router = useRouter()
+
   const [bannerItem, setBannerItem] = useState<UIBannerItem | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: true,
-      title: "Offer Details",
-    })
-  }, [navigation])
+  const handleBackPress = () => {
+    router.back()
+  }
 
   useEffect(() => {
     const fetchBannerItem = async () => {
@@ -29,19 +36,19 @@ const OfferDetails = React.memo(() => {
       try {
         setIsLoading(true)
         setError(null)
-        
+
         // Fetch banner data (defaulting to v2 as it has multiple items with IDs)
         const bannerRes = await fetchBanner("v2")
-        
+
         if (!bannerRes || !bannerRes.payload) {
           throw new Error("Invalid banner response")
         }
 
         const bannerUI = mapBannerToUI(bannerRes)
-        
+
         // Find the banner item with matching ID
         const item = bannerUI.banners.find(
-          (banner) => banner.id === String(params.id)
+          (banner) => banner.id === String(params.id),
         )
 
         if (!item) {
@@ -60,41 +67,63 @@ const OfferDetails = React.memo(() => {
     fetchBannerItem()
   }, [params?.id])
 
-  if (isLoading) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text style={styles.loadingText}>Loading banner details...</Text>
-      </View>
-    )
-  }
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <View style={styles.contentContainer}>
+          <ActivityIndicator size="large" color="#0000ff" />
+          <Text style={styles.loadingText}>Loading banner details...</Text>
+        </View>
+      )
+    }
 
-  if (error) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.errorText}>Error: {error}</Text>
-      </View>
-    )
-  }
+    if (error) {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.errorText}>Error: {error}</Text>
+        </View>
+      )
+    }
 
-  if (!bannerItem) {
+    if (!bannerItem) {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.errorText}>Banner item not found</Text>
+        </View>
+      )
+    }
+
     return (
-      <View style={styles.container}>
-        <Text style={styles.errorText}>Banner item not found</Text>
+      <View style={styles.contentContainer}>
+        <Text style={styles.screenTitle}>Offer Details Screen</Text>
+        <Text style={styles.bannerId}>Banner ID: {bannerItem.id}</Text>
+        <Image
+          source={{ uri: bannerItem.image }}
+          style={styles.bannerImage}
+          resizeMode="contain"
+        />
       </View>
     )
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.screenTitle}>Offer Details Screen</Text>
-      <Text style={styles.bannerId}>Banner ID: {bannerItem.id}</Text>
-      <Image
-        source={{ uri: bannerItem.image }}
-        style={styles.bannerImage}
-        resizeMode="contain"
-      />
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        {/* Custom Header */}
+        <View style={styles.header}>
+          <TouchableOpacity
+            onPress={handleBackPress}
+            style={styles.backButton}
+            activeOpacity={0.7}>
+            <Ionicons name="arrow-back" size={24} color="#000" />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Offer Details</Text>
+          <View style={styles.placeholder} />
+        </View>
+        {/* Content */}
+        {renderContent()}
+      </View>
+    </SafeAreaView>
   )
 })
 
@@ -102,6 +131,30 @@ export default OfferDetails
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e0e0e0",
+  },
+  backButton: {
+    padding: 8,
+    borderRadius: 8,
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#000",
+  },
+  placeholder: {
+    width: 40,
+  },
+  contentContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
