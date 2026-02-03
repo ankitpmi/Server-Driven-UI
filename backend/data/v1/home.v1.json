@@ -50,7 +50,7 @@
       "layout": {
         "container": {
           "paddingHorizontal": "lg",
-
+          "paddingVertical": "lg",
           "background": {
             "backgroundType": "solidColor",
             "value": "#C50F1B"
@@ -64,15 +64,19 @@
     {
       "id": "banner_default_1",
       "type": "banner",
-      "version": "v1",
+      "version": "v2",
       "order": 2,
       "festival": "default",
       "active": true,
       "layout": {
-        "container": {},
+        "container": {
+          "marginTop": "lg"
+        },
         "item": {
           "marginBottom": "md",
-          "height": "h-30"
+          "height": "h-20",
+          "marginHorizontal": "lg",
+          "borderRadius": "md"
         }
       },
       "config": {

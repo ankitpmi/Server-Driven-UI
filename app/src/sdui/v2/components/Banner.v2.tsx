@@ -163,14 +163,13 @@ export const BannerV2 = React.memo(
                 progress.value = absoluteProgress
               }}
               containerStyle={{ width: PAGE_WIDTH }}
-              style={{ height: 180 }}
+              style={{ height: "100%" }}
               data={bannerData?.banners}
               renderItem={({ item, index }) => (
                 <Pressable
                   onPress={() => onPressBannerItem(item)}
                   style={{
                     flex: 1,
-                    marginHorizontal: 16,
                   }}>
                   <Animated.Image
                     source={{ uri: item.image }}
@@ -190,7 +189,7 @@ export const BannerV2 = React.memo(
                       {
                         width: "100%",
                         height: "100%",
-                        borderRadius: 10,
+
                         position: "absolute",
                       },
                       animatedStyle,
