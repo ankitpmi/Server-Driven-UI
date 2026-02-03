@@ -1,7 +1,9 @@
-import { ColorValue, DimensionValue, TextStyle } from "react-native"
+import { ColorValue, DimensionValue, TextStyle, Dimensions } from "react-native"
 import { DesignTokens } from "../types"
 
 type SizeValue = number | string | undefined | null
+
+const { height: SCREEN_HEIGHT, width: SCREEN_WIDTH } = Dimensions.get("screen")
 
 export interface TextStyleConfig {
   fontFamily?: string
@@ -107,6 +109,42 @@ export function resolveColor(
 /**
  * Converts backend size values into valid React Native DimensionValue
  */
+// export function resolveDimension(
+//   value: SizeValue,
+//   tokens?: DesignTokens,
+// ): DimensionValue | undefined {
+//   if (value === null || value === undefined) return undefined
+
+//   if (typeof value === "number") return value
+
+//   if (typeof value !== "string") return undefined
+
+//   const trimmed = value.trim()
+
+//   // token
+//   const tokenValue = tokens?.spacing?.[trimmed]
+//   if (typeof tokenValue === "number") {
+//     return tokenValue
+//   }
+
+//   // numeric string
+//   if (!isNaN(Number(trimmed))) {
+//     return Number(trimmed)
+//   }
+
+//   // percentage
+//   if (/^\d+(\.\d+)?%$/.test(trimmed)) {
+//     return trimmed as `${number}%`
+//   }
+
+//   // auto
+//   if (trimmed === "auto") {
+//     return "auto"
+//   }
+
+//   return undefined
+// }
+
 export function resolveDimension(
   value: SizeValue,
   tokens?: DesignTokens,
@@ -119,10 +157,24 @@ export function resolveDimension(
 
   const trimmed = value.trim()
 
-  // token
+  // token (spacing)
   const tokenValue = tokens?.spacing?.[trimmed]
   if (typeof tokenValue === "number") {
     return tokenValue
+  }
+
+  // h-30 → 30% of screen height
+  const heightMatch = /^h-(\d+(\.\d+)?)$/.exec(trimmed)
+  if (heightMatch) {
+    const percent = Number(heightMatch[1])
+    return (SCREEN_HEIGHT * percent) / 100
+  }
+
+  // w-20 → 20% of screen width
+  const widthMatch = /^w-(\d+(\.\d+)?)$/.exec(trimmed)
+  if (widthMatch) {
+    const percent = Number(widthMatch[1])
+    return (SCREEN_WIDTH * percent) / 100
   }
 
   // numeric string
@@ -130,7 +182,7 @@ export function resolveDimension(
     return Number(trimmed)
   }
 
-  // percentage
+  // percentage (e.g. "50%")
   if (/^\d+(\.\d+)?%$/.test(trimmed)) {
     return trimmed as `${number}%`
   }

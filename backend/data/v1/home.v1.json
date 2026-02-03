@@ -35,7 +35,7 @@
     "id": "home_default",
     "template": "hero_first",
     "version": "v1",
-    "statusBardBackground": "mutedCoral"
+    "statusBardBackground": "#C50F1B"
   },
   "sections": [
     {
@@ -50,13 +50,10 @@
       "layout": {
         "container": {
           "paddingHorizontal": "lg",
-          "paddingVertical": "xl",
+
           "background": {
-            "backgroundType": "gradient",
-            "colors": ["mutedCoral", "white", "whiteTransparent"],
-            "start": [1, 0],
-            "end": [1, 1],
-            "locations": [0, 0.9, 0.98]
+            "backgroundType": "solidColor",
+            "value": "#C50F1B"
           }
         }
       },
@@ -67,16 +64,15 @@
     {
       "id": "banner_default_1",
       "type": "banner",
-      "version": "v2",
+      "version": "v1",
       "order": 2,
       "festival": "default",
       "active": true,
       "layout": {
         "container": {},
         "item": {
-          "borderRadius": "md",
           "marginBottom": "md",
-          "height": 180
+          "height": "h-30"
         }
       },
       "config": {

@@ -91,7 +91,7 @@ export const BannerV1 = React.memo(
                 {
                   width: "100%",
                   height: "100%",
-                  borderRadius: 10,
+                  // borderRadius: 10,
                   position: "absolute",
                 },
                 animatedStyle,
