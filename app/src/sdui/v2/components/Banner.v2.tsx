@@ -172,6 +172,7 @@ export const BannerV2 = React.memo(
               onProgressChange={(offsetProgress, absoluteProgress) => {
                 progress.value = absoluteProgress
               }}
+              containerStyle={{}}
               style={{ height: "100%" }}
               data={bannerData?.banners}
               renderItem={({ item, index }) => (
@@ -179,6 +180,7 @@ export const BannerV2 = React.memo(
                   onPress={() => onPressBannerItem(item)}
                   style={{
                     flex: 1,
+                    // marginHorizontal: marginHorizontal, // 👈 THIS creates the gap
                   }}>
                   <Animated.Image
                     source={{ uri: item.image }}
