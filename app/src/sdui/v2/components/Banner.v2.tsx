@@ -1,4 +1,4 @@
-import { View, Dimensions, Pressable } from "react-native"
+import { View, Dimensions, Pressable, DimensionValue } from "react-native"
 
 import { SectionItemWrapper, SectionWrapper } from "../../shared"
 import React, { useCallback, useEffect, useState } from "react"
@@ -25,6 +25,7 @@ import Carousel, {
 } from "react-native-reanimated-carousel"
 
 import { useRouter } from "expo-router"
+import { resolveDimension, resolveSpacing } from "@/src/utils"
 
 const { width } = Dimensions.get("window")
 
@@ -144,6 +145,11 @@ export const BannerV2 = React.memo(
       }
     })
 
+    const marginHorizontal: DimensionValue | undefined = resolveSpacing(
+      layout?.item?.marginHorizontal,
+      tokens,
+    )
+
     const isLoading = loading || imageLoading
 
     return (
@@ -158,11 +164,14 @@ export const BannerV2 = React.memo(
               ref={ref}
               {...baseOptions}
               loop
-              width={PAGE_WIDTH}
+              width={
+                typeof marginHorizontal === "number"
+                  ? PAGE_WIDTH - marginHorizontal * 2
+                  : PAGE_WIDTH
+              }
               onProgressChange={(offsetProgress, absoluteProgress) => {
                 progress.value = absoluteProgress
               }}
-              containerStyle={{ width: PAGE_WIDTH }}
               style={{ height: "100%" }}
               data={bannerData?.banners}
               renderItem={({ item, index }) => (
